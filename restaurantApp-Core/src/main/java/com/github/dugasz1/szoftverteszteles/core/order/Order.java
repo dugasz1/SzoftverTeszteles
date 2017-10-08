@@ -9,7 +9,7 @@ import java.util.Dictionary;
 public class Order {
     private int id;
     private Date date;
-    private int complited;
+    private int complited;      //suggesting variable name change to "completed" and type to "boolean"
     private Collection<MenuItem> menuItems;
 
     public Order(int id, Date date, Collection<MenuItem> menuItems){
@@ -26,9 +26,10 @@ public class Order {
     }
 
     float CalculateTotalPrice(){
+        float totalprice = 0;
         for (MenuItem menuItem: menuItems) {
-
+            totalprice += menuItem.getPrice();
         }
-        return 0;
+        return totalprice;
     }
 }
