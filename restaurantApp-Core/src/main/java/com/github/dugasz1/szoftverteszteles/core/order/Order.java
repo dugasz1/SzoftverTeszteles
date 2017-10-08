@@ -13,11 +13,22 @@ public class Order {
     private Collection<MenuItem> menuItems;
 
     public Order(int id, Date date, Collection<MenuItem> menuItems){
+        if(date == null)
+            throw new NullPointerException("Date can not be null.");
+        if(menuItems == null)
+            throw new NullPointerException("Menuitem collection can not be null.");
+        if(menuItems.isEmpty())
+            throw new IllegalArgumentException("Menuitem collection can not be empty.");
 
+        this.id = id;
+        this.date = date;
+        this.menuItems = menuItems;
     }
 
     float CalculateTotalPrice(){
-        //TODO: implement
+        for (MenuItem menuItem: menuItems) {
+
+        }
         return 0;
     }
 }
