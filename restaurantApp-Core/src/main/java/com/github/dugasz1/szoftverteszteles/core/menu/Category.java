@@ -1,5 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.core.menu;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
+
 public class Category {
     private int id;
     private String name;
@@ -9,9 +12,9 @@ public class Category {
      * @param id
      * @param name
      */
-    public Category(int id, String name){
+    public Category(int id, String name)throws NoNameException{
         if(name == null)
-            throw new NullPointerException("Name cannot be null.");
+            throw new NoNameException("Name cannot be empty.");
         this.id = id;
         this.name = name;
     }

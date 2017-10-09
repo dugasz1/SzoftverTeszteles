@@ -1,5 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.core.menu;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
+
 public class IngredientItem {
     private int id;
     private String name;
@@ -14,12 +17,12 @@ public class IngredientItem {
      * @param unit
      */
 
-    public IngredientItem(int id, String name, Nutritions nutritions, String unit)
+    public IngredientItem(int id, String name, Nutritions nutritions, String unit) throws NoNameException,NoIngredientException
     {
         if(name == null)
-            throw new NullPointerException("Name cannot be null.");
+            throw new NoNameException("Item must have a name.");
         if(nutritions == null)
-            throw new NullPointerException("Ingredient must be contain one value.");
+            throw new NoIngredientException("Ingredient must contain one value.");
         this.id = id;
         this.name = name;
         this.nutrions = nutritions;

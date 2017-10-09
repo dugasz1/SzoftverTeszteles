@@ -1,5 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.core.menu;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+
 import java.util.Collection;
 
 public class Recipe {
@@ -7,11 +10,11 @@ public class Recipe {
     private Category category;
     private Collection<Ingredient> ingredients;
 
-    public Recipe (int id, Category category, Collection<Ingredient> ingredients){
+    public Recipe (int id, Category category, Collection<Ingredient> ingredients)throws NoIngredientException,NoCategoryException{
         if(category == null)
-            throw new NullPointerException("Category can not be null.");
+            throw new NoCategoryException("Recipe must have a Category");
         if(ingredients == null)
-            throw new NullPointerException("Ingredient can not be null.");
+            throw new NoIngredientException("Recipe must have an Ingredients.");
         if(ingredients.isEmpty())
             throw new IllegalArgumentException("Recipe must contain at least one ingredient.");
 

@@ -1,5 +1,7 @@
 package com.github.dugasz1.szoftverteszteles.core.menu;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+
 public class Ingredient {
     private IngredientItem ingredientItem;
     private float quantity;
@@ -9,12 +11,12 @@ public class Ingredient {
      * @param ingredientItem
      * @param quantity
      */
-    public Ingredient(IngredientItem ingredientItem, float quantity)
+    public Ingredient(IngredientItem ingredientItem, float quantity)throws NoIngredientException
     {
         if(ingredientItem == null)
-            throw new NullPointerException("ingredientItem cannot be null.");
-        if(quantity < 0)
-            throw  new IllegalArgumentException("quantity cannot be negative.");
+            throw new NoIngredientException("IngredientItem cannot be empty.");
+        if(quantity < 1)
+            throw  new IllegalArgumentException("Quantity cannot be negative or zero.");
         this.ingredientItem = ingredientItem;
         this.quantity = quantity;
     }
