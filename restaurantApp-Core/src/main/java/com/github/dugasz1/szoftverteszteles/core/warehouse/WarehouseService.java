@@ -9,12 +9,12 @@ import java.util.Map;
 public interface WarehouseService {
 
     /**
-     * Collets How much ingredient will be consumed by the order.
+     * Collects how much ingredient will be consumed by the order.
      * @param order The order.
      * @return
      */
-    public Map<WarehouseItem, Float> CalculateOrderConsume(Order order);
+    public Map<WarehouseItem, Float> calculateOrderConsume(Order order);
 
-    public Collection<WarehouseItem> GetCloseToWarrant(Date date);
+    public Collection<WarehouseItem> getCloseToWarrant(Date date);
     
 }

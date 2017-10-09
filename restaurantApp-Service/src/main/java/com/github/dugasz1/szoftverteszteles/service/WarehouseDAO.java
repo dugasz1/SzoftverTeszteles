@@ -11,10 +11,10 @@ import java.util.Map;
 
 public interface WarehouseDAO {
 
-    public WarehouseItem Create(Ingredient ingredient, User user, Date registered, Date warrant);
+    public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
 
-    public WarehouseItem Get(int id);
-    public Collection<WarehouseItem> GetByUser( User user);
+    public WarehouseItem getWarehouseItem(int id);
+    public Collection<WarehouseItem> getByUser( User user);
 
     /**
      * - Gets warehouseitems between registered date.
@@ -24,7 +24,7 @@ public interface WarehouseDAO {
      * @param until until Date
      * @return Collection of warehouse item
      */
-    public Collection<WarehouseItem> GetByRegisteredDate(Date from, Date until);
+    public Collection<WarehouseItem> getByRegisteredDate(Date from, Date until);
 
     /**
      * - Gets warehouseitems between warrant date.
@@ -34,13 +34,13 @@ public interface WarehouseDAO {
      * @param until until Date
      * @return Collection of warehouse item
      */
-    public Collection<WarehouseItem> GetByWarrantDate(Date from, Date until);
+    public Collection<WarehouseItem> getByWarrantDate(Date from, Date until);
 
-    public boolean Update(int id);
-    public boolean Update(WarehouseItem warehouseItem);
+    public boolean updateWarehouseItem(int id);
+    public boolean updateWarehouseItem(WarehouseItem warehouseItem);
 
-    public boolean Delete(int id);
-    public boolean Delete(WarehouseItem warehouseItem);
+    public boolean deleteWarehouseItem(int id);
+    public boolean deleteWarehouseItem(WarehouseItem warehouseItem);
 
 
 }

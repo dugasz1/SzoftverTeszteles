@@ -3,11 +3,11 @@ package com.github.dugasz1.szoftverteszteles.service;
 import com.github.dugasz1.szoftverteszteles.core.menu.Recipe;
 
 public interface RecipeDAO {
-    public Recipe Get(int id);
+    public Recipe getRecipe(int id);
 
-    public boolean Update(int id);
-    public boolean Update(Recipe recipe);
+    public boolean updateRecipe(int id);
+    public boolean updateRecipe(Recipe recipe);
 
-    public boolean Delete(int id);
-    public boolean Delete(Recipe recipe);
+    public boolean deleteRecipe(int id);
+    public boolean deleteRecipe(Recipe recipe);
 }

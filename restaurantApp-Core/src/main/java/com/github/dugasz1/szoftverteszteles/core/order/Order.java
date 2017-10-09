@@ -25,10 +25,10 @@ public class Order {
     }
 
     /**
-     *
+     *@param
      * @return
      */
-    float CalculateTotalPrice(){
+    float calculateTotalPrice(){
         float totalprice = 0;
         for (MenuItem menuItem: menuItems) {
             totalprice += menuItem.getPrice();
