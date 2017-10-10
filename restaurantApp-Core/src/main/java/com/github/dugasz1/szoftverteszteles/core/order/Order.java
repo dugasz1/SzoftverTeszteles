@@ -25,14 +25,42 @@ public class Order {
     }
 
     /**
-     *@param
-     * @return
+     * Calculates the sum of the prices of the ordered meals
+     * @return totalprice - the sum of the prices
      */
-    float calculateTotalPrice(){
+    public float calculateTotalPrice(){
         float totalprice = 0;
         for (MenuItem menuItem: menuItems) {
             totalprice += menuItem.getPrice();
         }
         return totalprice;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(boolean completed) {
+        this.completed = completed;
+    }
+
+    public Collection<MenuItem> getMenuItems() {
+        return menuItems;
+    }
+
+    public void setMenuItems(Collection<MenuItem> menuItems) {
+        this.menuItems = menuItems;
     }
 }
