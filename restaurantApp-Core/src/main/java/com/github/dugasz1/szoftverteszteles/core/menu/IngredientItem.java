@@ -3,7 +3,7 @@ package com.github.dugasz1.szoftverteszteles.core.menu;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 
-public class IngredientItem {
+public class  IngredientItem {
     private int id;
     private String name;
     private Nutritions nutrions;
