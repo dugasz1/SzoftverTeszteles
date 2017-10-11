@@ -1,6 +1,9 @@
 package com.github.dugasz1.szoftverteszteles.core.warehouse;
 
 import com.github.dugasz1.szoftverteszteles.core.authorization.User;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoDateException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoUserException;
 import com.github.dugasz1.szoftverteszteles.core.menu.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.menu.IngredientItem;
 
@@ -13,15 +16,15 @@ public class WarehouseItem {
     private Date registered;
     private Date warrant;
 
-    public WarehouseItem(int id, IngredientItem ingredientItem, User user, Date registered, Date warrant){
+    public WarehouseItem(int id, IngredientItem ingredientItem, User user, Date registered, Date warrant) throws NoIngredientException, NoDateException, NoUserException {
         if ( ingredientItem == null )
-            throw new NullPointerException("Ingredient item can not be null.");
+            throw new NoIngredientException("Ingredient item can not be null.");
         if( user == null )
-            throw new NullPointerException("User can not be null.");
+            throw new NoUserException("User can not be null.");
         if( registered == null)
-            throw new NullPointerException("Registered date can not be null.");
+            throw new NoDateException("Registered date can not be null.");
         if( warrant == null )
-            throw new NullPointerException("Warrant date can not be null.");
+            throw new NoDateException("Warrant date can not be null.");
 
         this.id = id;
         this.ingredientItem = ingredientItem;
