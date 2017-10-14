@@ -1,8 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.User;
-import com.github.dugasz1.szoftverteszteles.core.menu.Ingredient;
-import com.github.dugasz1.szoftverteszteles.core.warehouse.WarehouseItem;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
+import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
+import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
 import com.github.dugasz1.szoftverteszteles.service.WarehouseDAO;
 
 import java.util.Collection;

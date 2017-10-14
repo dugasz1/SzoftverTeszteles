@@ -1,15 +1,12 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.User;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.service.DatabaseNotAvaibleException;
 import com.github.dugasz1.szoftverteszteles.service.MultipleResultException;
 import com.github.dugasz1.szoftverteszteles.service.UserDAO;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class UserDAOmysql implements UserDAO {
     private Connection conn;

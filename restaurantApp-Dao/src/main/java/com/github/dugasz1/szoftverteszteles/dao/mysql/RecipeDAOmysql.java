@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.menu.Recipe;
+import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 import com.github.dugasz1.szoftverteszteles.service.RecipeDAO;
 
 public class RecipeDAOmysql implements RecipeDAO {

@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.menu.MenuItem;
+import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 
 public interface MenuDAO {
     public MenuItem getMenuItem(int id);

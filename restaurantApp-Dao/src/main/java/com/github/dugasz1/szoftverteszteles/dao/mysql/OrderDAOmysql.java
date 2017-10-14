@@ -1,8 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.User;
-import com.github.dugasz1.szoftverteszteles.core.menu.MenuItem;
-import com.github.dugasz1.szoftverteszteles.core.order.Order;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
+import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
+import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.service.OrderDAO;
 
 import java.util.Collection;

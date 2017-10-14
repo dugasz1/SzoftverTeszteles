@@ -1,11 +1,10 @@
-package com.github.dugasz1.szoftverteszteles.core.warehouse;
+package com.github.dugasz1.szoftverteszteles.core.model;
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.User;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoDateException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoUserException;
-import com.github.dugasz1.szoftverteszteles.core.menu.Ingredient;
-import com.github.dugasz1.szoftverteszteles.core.menu.IngredientItem;
+import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 
 import java.util.Date;
 

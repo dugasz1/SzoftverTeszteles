@@ -1,13 +1,11 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.User;
-import com.github.dugasz1.szoftverteszteles.core.menu.Ingredient;
-import com.github.dugasz1.szoftverteszteles.core.order.Order;
-import com.github.dugasz1.szoftverteszteles.core.warehouse.WarehouseItem;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
+import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
+import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
 
 import java.util.Collection;
 import java.util.Date;
-import java.util.Map;
 
 public interface WarehouseDAO {
 

@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.menu.IngredientItem;
+import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 
 public interface IngredientDAO {
     public IngredientItem getIngredientItem(int id);
