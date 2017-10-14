@@ -3,7 +3,17 @@ package com.github.dugasz1.szoftverteszteles.dao.mysql;
 import com.github.dugasz1.szoftverteszteles.core.menu.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.service.IngredientDAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 public class IngredientDAOmysql implements IngredientDAO {
+    private Connection conn;
+
+    public IngredientDAOmysql (Connection conn){
+        this.conn = conn;
+    }
+
     public IngredientItem getIngredientItem(int id) {
         return null;
     }

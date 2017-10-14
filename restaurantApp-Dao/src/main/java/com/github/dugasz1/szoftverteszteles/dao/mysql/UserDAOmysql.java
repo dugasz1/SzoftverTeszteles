@@ -6,8 +6,17 @@ import com.github.dugasz1.szoftverteszteles.service.DatabaseNotAvaibleException;
 import com.github.dugasz1.szoftverteszteles.service.MultipleResultException;
 import com.github.dugasz1.szoftverteszteles.service.UserDAO;
 
-public class UserDAOmysql implements UserDAO {
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+public class UserDAOmysql implements UserDAO {
+    private Connection conn;
+
+    public UserDAOmysql(Connection conn){
+        this.conn = conn;
+    }
 
     public User createUser(String name, String password) throws DatabaseNotAvaibleException {
         return null;
