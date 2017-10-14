@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.authorization.*;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
 
 public interface UserDAO {
     /**
@@ -9,7 +9,7 @@ public interface UserDAO {
      * @return The user. null if username already exist.
      * @exception DatabaseNotAvaibleException If can't reach database.
      */
-    User createUser( String name, String password ) throws DatabaseNotAvaibleException;
+    User createUser(String name, String password ) throws DatabaseNotAvaibleException;
 
     /**
      * Get the user from the database

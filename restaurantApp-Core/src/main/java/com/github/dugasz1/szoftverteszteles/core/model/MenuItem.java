@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.core.menu;
+package com.github.dugasz1.szoftverteszteles.core.model;
 
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoRecipeException;
 

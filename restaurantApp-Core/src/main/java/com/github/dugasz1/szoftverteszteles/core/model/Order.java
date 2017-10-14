@@ -1,8 +1,8 @@
-package com.github.dugasz1.szoftverteszteles.core.order;
+package com.github.dugasz1.szoftverteszteles.core.model;
 
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoDateException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoMenuitemException;
-import com.github.dugasz1.szoftverteszteles.core.menu.MenuItem;
+import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 
 import java.util.Collection;
 import java.util.Date;

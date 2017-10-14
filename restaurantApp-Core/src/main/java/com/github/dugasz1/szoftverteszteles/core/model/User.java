@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.core.authorization;
+package com.github.dugasz1.szoftverteszteles.core.model;
 
 public class User {
     private int id;

@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.core.menu;
+package com.github.dugasz1.szoftverteszteles.core.model;
 
 public class Nutritions {
     private float energy;

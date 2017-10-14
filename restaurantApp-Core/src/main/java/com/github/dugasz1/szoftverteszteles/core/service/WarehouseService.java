@@ -1,6 +1,7 @@
-package com.github.dugasz1.szoftverteszteles.core.warehouse;
+package com.github.dugasz1.szoftverteszteles.core.service;
 
-import com.github.dugasz1.szoftverteszteles.core.order.Order;
+import com.github.dugasz1.szoftverteszteles.core.model.Order;
+import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
 
 import java.util.Collection;
 import java.util.Date;

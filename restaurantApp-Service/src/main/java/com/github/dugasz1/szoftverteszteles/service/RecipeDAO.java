@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.menu.Recipe;
+import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 
 public interface RecipeDAO {
     public Recipe getRecipe(int id);
