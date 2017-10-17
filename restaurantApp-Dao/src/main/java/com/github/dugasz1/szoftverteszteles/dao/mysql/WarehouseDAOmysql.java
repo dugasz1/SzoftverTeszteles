@@ -1,16 +1,23 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
+import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
+import com.github.dugasz1.szoftverteszteles.service.IngredientDAO;
 import com.github.dugasz1.szoftverteszteles.service.WarehouseDAO;
 
 import java.util.Collection;
 import java.util.Date;
 
 public class WarehouseDAOmysql implements WarehouseDAO{
+    private IngredientDAO ingredientDAO;
+    public WarehouseDAOmysql(IngredientDAO ingredientDAO) {
+        this.ingredientDAO = ingredientDAO;
+    }
 
     public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) {
+        //IngredientItem ingredientItem = ingredientDAO.getIngredientItem(0);
         return null;
     }
 
