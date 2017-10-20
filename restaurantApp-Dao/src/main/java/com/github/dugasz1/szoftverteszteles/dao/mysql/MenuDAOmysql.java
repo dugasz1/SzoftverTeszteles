@@ -1,7 +1,7 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
-import com.github.dugasz1.szoftverteszteles.service.MenuDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
 
 public class MenuDAOmysql implements MenuDAO{
 

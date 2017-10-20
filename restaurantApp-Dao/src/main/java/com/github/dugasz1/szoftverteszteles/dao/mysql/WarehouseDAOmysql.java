@@ -1,11 +1,10 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
-import com.github.dugasz1.szoftverteszteles.service.IngredientDAO;
-import com.github.dugasz1.szoftverteszteles.service.WarehouseDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.WarehouseDAO;
 
 import java.util.Collection;
 import java.util.Date;

@@ -1,13 +1,11 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 
 import com.github.dugasz1.szoftverteszteles.core.model.Nutritions;
-import com.github.dugasz1.szoftverteszteles.core.model.User;
-import com.github.dugasz1.szoftverteszteles.service.*;
+import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.sql.*;
@@ -23,7 +21,7 @@ public class IngredientDAOmysql implements IngredientDAO {
     }
 
 
-    public IngredientItem getIngredientItem(int id) throws NoIngredientException, NoNameException, NotFoundException, DatabaseNotAvaibleException, DatabaseException {
+    public IngredientItem getIngredientItem(int id) throws NoIngredientException, NoNameException, NotFoundException, StorageNotAvaibleException, StorageException {
         String selectSQL = "SELECT * FROM ingredient WHERE id = ?";
         PreparedStatement ps = null;
         IngredientItem ingredient = null;
@@ -46,10 +44,10 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new DatabaseNotAvaibleException();
+            throw new StorageNotAvaibleException();
         }
         catch (SQLException e) {
-            throw new DatabaseException();
+            throw new StorageException();
         }
         return ingredient;
     }
@@ -61,7 +59,7 @@ public class IngredientDAOmysql implements IngredientDAO {
     }
 
 
-    public boolean updateIngredientItem(IngredientItem recipe) throws NotFoundException, DatabaseNotAvaibleException, AlreadyExistingException, DatabaseException {
+    public boolean updateIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvaibleException, AlreadyExistingException, StorageException {
         String updateSQL = "UPDATE ingredient SET name = ?, energy = ?, fat = ?, carbohydrate = ?, protein = ?, salt = ?, unit = ?  WHERE id = ?";
         try
         {
@@ -82,7 +80,7 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new DatabaseNotAvaibleException();
+            throw new StorageNotAvaibleException();
         }
         catch(SQLIntegrityConstraintViolationException e)
         {
@@ -90,14 +88,14 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (SQLException e)
         {
-            throw new DatabaseException();
+            throw new StorageException();
         }
         return true;
 
     }
 
 
-    public boolean deleteIngredientItem(int id) throws NotFoundException, DatabaseNotAvaibleException, DatabaseException {
+    public boolean deleteIngredientItem(int id) throws NotFoundException, StorageNotAvaibleException, StorageException {
         String deleteSQL = "DELETE FROM ingredient WHERE id = ?";
         try
         {
@@ -110,18 +108,18 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new DatabaseNotAvaibleException();
+            throw new StorageNotAvaibleException();
         }
         catch (SQLException e)
         {
-            throw new DatabaseException();
+            throw new StorageException();
         }
         return true;
 
     }
 
 
-    public boolean deleteIngredientItem(IngredientItem recipe) throws NotFoundException, DatabaseNotAvaibleException, DatabaseException {
+    public boolean deleteIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvaibleException, StorageException {
         String deleteSQL = "DELETE FROM ingredient WHERE name = ?";
         try
         {
@@ -134,11 +132,11 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new DatabaseNotAvaibleException();
+            throw new StorageNotAvaibleException();
         }
         catch (SQLException e)
         {
-            throw new DatabaseException();
+            throw new StorageException();
         }
         return true;
     }

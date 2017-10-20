@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.core.service;
+package com.github.dugasz1.szoftverteszteles.service.dao;
 
 import com.github.dugasz1.szoftverteszteles.core.exceptions.AlreadyExistingException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
@@ -6,7 +6,7 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageNotAvaibleException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 
-public interface UserService {
+public interface UserDAO {
     /**
      * Create a user and save it in the database.
      * @param name
@@ -24,7 +24,7 @@ public interface UserService {
     User getUser( int id ) throws StorageNotAvaibleException, StorageException, NotFoundException;
     User getUser( String name ) throws StorageNotAvaibleException, NotFoundException, StorageException;
 
-    boolean updateUser(User id) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException;
+    boolean updateUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException;
 
     /**
      *

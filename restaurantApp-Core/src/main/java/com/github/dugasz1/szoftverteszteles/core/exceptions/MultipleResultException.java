@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.service;
+package com.github.dugasz1.szoftverteszteles.core.exceptions;
 
 /**
  * Thrown when one result is expected but the query arrived with multiplie result

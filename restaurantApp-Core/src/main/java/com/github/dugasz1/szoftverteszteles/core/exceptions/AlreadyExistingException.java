@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.service;
+package com.github.dugasz1.szoftverteszteles.core.exceptions;
 
 public class AlreadyExistingException extends Exception {
     public AlreadyExistingException() {
