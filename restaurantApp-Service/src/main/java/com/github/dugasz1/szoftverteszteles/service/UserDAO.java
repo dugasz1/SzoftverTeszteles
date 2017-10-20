@@ -9,7 +9,7 @@ public interface UserDAO {
      * @return The user. null if username already exist.
      * @exception DatabaseNotAvaibleException If can't reach database.
      */
-    User createUser(String name, String password ) throws DatabaseNotAvaibleException;
+    User createUser(String name, String password ) throws DatabaseNotAvaibleException, AlreadyExistingException, DatabaseException;
 
     /**
      * Get the user from the database
@@ -17,10 +17,10 @@ public interface UserDAO {
      * @return The user. If user is not exist then null.
      * @throws DatabaseNotAvaibleException If can't reach database.
      */
-    User getUser( int id ) throws DatabaseNotAvaibleException;
-    User getUser( String name ) throws MultipleResultException, DatabaseNotAvaibleException;
+    User getUser( int id ) throws DatabaseNotAvaibleException, DatabaseException, NotFoundException;
+    User getUser( String name ) throws DatabaseNotAvaibleException, NotFoundException, DatabaseException;
 
-    boolean Update(User id);
+    boolean Update(User id) throws DatabaseNotAvaibleException, AlreadyExistingException, DatabaseException, NotFoundException;
 
     /**
      *
@@ -28,8 +28,8 @@ public interface UserDAO {
      * @return True if delete was successfull, false if id does not exist.
      * @throws DatabaseNotAvaibleException If can't reach database.
      */
-    boolean deleteUser (int id ) throws DatabaseNotAvaibleException;
-    boolean deleteUser( User user ) throws DatabaseNotAvaibleException;
+    boolean deleteUser (int id ) throws DatabaseNotAvaibleException, DatabaseException, NotFoundException;
+    boolean deleteUser( User user ) throws DatabaseNotAvaibleException, NotFoundException, DatabaseException;
 
     /*User LoginUser ( String name, String password );
     boolean LogoutUser ( User user ); //Don't know is it needed. How sessions works?*/
