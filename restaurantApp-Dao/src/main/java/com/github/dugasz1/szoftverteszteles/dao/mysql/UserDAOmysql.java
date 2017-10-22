@@ -17,7 +17,7 @@ public class UserDAOmysql implements UserDAO {
         this.conn = conn;
     }
 
-    public User createUser(String name, String password) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
+    public User createUser(String name) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
         String insertSQL = "Insert into user (username) VALUES (?)";
         int last_id = 0;
         User user = null;
@@ -109,7 +109,7 @@ public class UserDAOmysql implements UserDAO {
         return user;
     }
 
-    public boolean Update(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException {
+    public boolean updateUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException {
         String updateSQL = "UPDATE user SET username = ? WHERE id = ?";
         try
         {
