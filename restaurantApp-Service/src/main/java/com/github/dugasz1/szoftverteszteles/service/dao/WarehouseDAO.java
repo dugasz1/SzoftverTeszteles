@@ -1,18 +1,22 @@
 package com.github.dugasz1.szoftverteszteles.service.dao;
 
+import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
 public interface WarehouseDAO {
 
     public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
 
+    public Map<WarehouseItem, Float> calculateOrderConsume(Order order);
     public WarehouseItem getWarehouseItem(int id);
     public Collection<WarehouseItem> getByUser( User user);
+    public Collection<WarehouseItem> getCloseToWarrant(Date date);
 
     /**
      * - Gets warehouseitems between registered date.

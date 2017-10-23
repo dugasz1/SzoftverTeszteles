@@ -1,6 +1,7 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
 import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
+import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
 import com.github.dugasz1.szoftverteszteles.core.service.WarehouseService;
@@ -8,8 +9,9 @@ import com.github.dugasz1.szoftverteszteles.service.dao.WarehouseDAO;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.Map;
 
-public class Warehouseimpl implements WarehouseDAO {
+public class Warehouseimpl implements WarehouseService {
 
     private WarehouseDAO warehouseDAO = null;
 
@@ -20,6 +22,14 @@ public class Warehouseimpl implements WarehouseDAO {
 
     public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) {
         return warehouseDAO.createWarehouseItem(ingredient, user, registered, warrant);
+    }
+
+    public Map<WarehouseItem, Float> calculateOrderConsume(Order order) {
+        return warehouseDAO.calculateOrderConsume(order);
+    }
+
+    public Collection<WarehouseItem> getCloseToWarrant(Date date) {
+        return warehouseDAO.getCloseToWarrant(date);
     }
 
     public WarehouseItem getWarehouseItem(int id) {
