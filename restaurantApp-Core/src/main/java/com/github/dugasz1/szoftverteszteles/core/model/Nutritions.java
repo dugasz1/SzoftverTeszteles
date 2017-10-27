@@ -72,4 +72,18 @@ public class Nutritions {
     public void setSalt(float salt) {
         this.salt = salt;
     }
+
+    @Override
+    public  boolean equals(Object obj){
+        if(this == obj)
+            return true;
+        if(obj == null)
+            return false;
+        if(getClass() != obj.getClass())
+            return false;
+        Nutritions nutritions = (Nutritions) obj;
+        if(this.energy != nutritions.energy || this.fat != nutritions.fat || this.carbohydrate != nutritions.carbohydrate || this.protein != nutritions.protein || this.salt != nutritions.protein)
+            return false;
+        return true;
+    }
 }

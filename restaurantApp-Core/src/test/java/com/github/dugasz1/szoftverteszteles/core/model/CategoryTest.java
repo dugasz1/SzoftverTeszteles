@@ -33,9 +33,9 @@ public class CategoryTest {
 
     @Test
     public void setId() throws Exception{
-        Category localId = new Category(3,"localCategory");
-        localId.setId(300);
-        assertEquals(localId.getId(),300);
+        Category localCategory = new Category(3,"localCategory");
+        localCategory.setId(300);
+        assertEquals(localCategory.getId(),300);
     }
 
     @Test
