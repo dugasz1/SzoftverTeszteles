@@ -38,4 +38,10 @@ public class CategoryTest {
         assertEquals(localId.getId(),300);
     }
 
+    @Test
+    public void equals() throws Exception{
+        Category sameCategory = new Category(1,"testcategory");
+        assertTrue(testCategory.equals(sameCategory));
+    }
+
 }
