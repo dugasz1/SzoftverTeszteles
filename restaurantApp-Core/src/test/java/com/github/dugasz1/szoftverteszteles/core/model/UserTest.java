@@ -25,9 +25,9 @@ public class UserTest {
 
     @Test
     public void setName() throws Exception {
-        User localTUser = new User(2, "localTuser");
-        localTUser.setName("renamed");
-        assertEquals(localTUser.getName(), "renamed");
+        User localUser = new User(2, "localTuser");
+        localUser.setName("renamed");
+        assertEquals(localUser.getName(), "renamed");
     }
 
     @Test
