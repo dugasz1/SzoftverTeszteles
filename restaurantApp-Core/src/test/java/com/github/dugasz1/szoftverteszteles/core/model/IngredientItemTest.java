@@ -4,9 +4,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class IngredientItemTest {
+
     private IngredientItem testIngredientItem = null;
+
     @Before
     public void setUp() throws Exception {
         testIngredientItem = new IngredientItem(1, "testingredientitem",
@@ -44,11 +47,11 @@ public class IngredientItemTest {
 
         localIngredientItem.setNutrions(new Nutritions(10.1f,20.2f,30.3f,40.4f,50.5f));
 
-        assertEquals((long) testIngredientItem.getNutrions().getEnergy(), (long) 10.1f);
-        assertEquals((long) testIngredientItem.getNutrions().getFat(),(long) 20.2f);
-        assertEquals((long) testIngredientItem.getNutrions().getCarbohydrate(),(long) 30.3f);
-        assertEquals((long) testIngredientItem.getNutrions().getProtein(),(long) 40.4f);
-        assertEquals((long) testIngredientItem.getNutrions().getSalt(),(long) 50.5f);
+        assertEquals((long) localIngredientItem.getNutrions().getEnergy(), (long) 10.1f);
+        assertEquals((long) localIngredientItem.getNutrions().getFat(),(long) 20.2f);
+        assertEquals((long) localIngredientItem.getNutrions().getCarbohydrate(),(long) 30.3f);
+        assertEquals((long) localIngredientItem.getNutrions().getProtein(),(long) 40.4f);
+        assertEquals((long) localIngredientItem.getNutrions().getSalt(),(long) 50.5f);
     }
 
     @Test
@@ -57,6 +60,7 @@ public class IngredientItemTest {
                 new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "localTunit");
 
         localIngredientItem.setName("renamed");
+
         assertEquals(localIngredientItem.getName(), "renamed");
     }
 
@@ -64,8 +68,18 @@ public class IngredientItemTest {
     public void setUnit() throws Exception {
         IngredientItem localIngredientItem = new IngredientItem(2, "localTingredientItem",
                 new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "localTunit");
-        
+
         localIngredientItem.setUnit("renamed");
+
         assertEquals(localIngredientItem.getUnit(), "renamed");
     }
+
+    @Test
+    public void equals() throws Exception {
+        IngredientItem sameIngredientItem = new IngredientItem(1, "testingredientitem",
+                new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "testunit");
+
+        assertTrue(testIngredientItem.equals(sameIngredientItem));
+    }
+
 }
