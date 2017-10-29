@@ -41,7 +41,7 @@ public class IngredientTest {
         Ingredient newLocalIngredient = new Ingredient(new IngredientItem(3, "newtestingredientitem",
                 new Nutritions(10.1f,20.2f,30.3f,40.4f,50.5f), "newtestunit"), 1.5f);
 
-        assertEquals(localIngredient.getIngredientItem(), newLocalIngredient);
+        assertEquals(localIngredient.getIngredientItem(), newLocalIngredient.getIngredientItem());
     }
 
     @Test
