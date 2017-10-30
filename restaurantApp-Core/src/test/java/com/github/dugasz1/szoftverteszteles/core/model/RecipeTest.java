@@ -63,4 +63,18 @@ public class RecipeTest {
         testRecipe.setIngredients(localIngredients);
         assertEquals(testRecipe.getIngredients(), localIngredients);
     }
+
+    @Test
+    public void equals() throws Exception{
+        Collection<Ingredient> localIngredients = new HashSet<Ingredient>();
+        localIngredients.add(new Ingredient ( new IngredientItem(1, "localtestingredientitem1",
+                new Nutritions(0.1f,0.2f,0.3f,0.4f,0.5f), "localtestunit1"), 1.5f));
+        localIngredients.add(new Ingredient(new IngredientItem(2, "localtestingredientitem2",
+                new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "localtestunit2"), 1.6f));
+
+        Recipe localRecipe1 = new Recipe(4, new Category(4, "localCategory"), localIngredients);
+        Recipe localRecipe2 = new Recipe(4, new Category(4, "localCategory"), localIngredients);
+
+        assertTrue(localRecipe2.equals(localRecipe1));
+    }
 }

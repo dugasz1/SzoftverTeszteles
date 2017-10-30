@@ -42,4 +42,18 @@ public class Recipe {
     public void setIngredients(Collection<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
+
+    @Override
+    public boolean equals(Object obj){
+        if(this == obj)
+            return true;
+        if(obj == null)
+            return false;
+        if(getClass() != obj.getClass())
+            return false;
+        Recipe recipe = (Recipe) obj;
+        if(this.id != recipe.id || !this.category.equals(recipe.category) || this.ingredients != recipe.ingredients)
+            return false;
+        return true;
+    }
 }
