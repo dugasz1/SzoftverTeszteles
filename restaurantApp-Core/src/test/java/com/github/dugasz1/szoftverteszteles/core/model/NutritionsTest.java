@@ -1,7 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
