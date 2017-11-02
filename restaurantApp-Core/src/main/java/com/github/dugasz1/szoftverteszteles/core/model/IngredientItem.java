@@ -26,6 +26,7 @@ public class  IngredientItem {
         this.id = id;
         this.name = name;
         this.nutrions = nutritions;
+        this.unit = unit;
     }
 
     public int getId() {
