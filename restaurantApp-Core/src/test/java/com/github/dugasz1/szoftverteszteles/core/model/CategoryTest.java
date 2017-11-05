@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,6 +42,11 @@ public class CategoryTest {
     public void equals() throws Exception{
         Category sameCategory = new Category(1,"testcategory");
         assertTrue(testCategory.equals(sameCategory));
+    }
+
+    @Test(expected = NoNameException.class)
+    public void constructorNoName() throws Exception{
+        Category category = new Category(1, null);
     }
 
 }

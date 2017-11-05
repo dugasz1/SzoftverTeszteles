@@ -13,10 +13,8 @@ public class Category {
      * @param name
      */
     public Category(int id, String name)throws NoNameException{
-        if(name == null)
-            throw new NoNameException("Name cannot be empty.");
         this.id = id;
-        this.name = name;
+        setName(name);
     }
 
     public String getName() {
@@ -27,7 +25,9 @@ public class Category {
         return id;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NoNameException {
+        if(name == null)
+            throw new NoNameException("Name cannot be empty.");
         this.name = name;
     }
 

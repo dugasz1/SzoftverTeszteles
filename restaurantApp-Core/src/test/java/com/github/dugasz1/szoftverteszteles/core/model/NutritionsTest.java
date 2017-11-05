@@ -78,6 +78,31 @@ public class NutritionsTest {
         assertEquals((long)localNutritions.getSalt(),(long)55.5f);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalEnergyArgument(){
+        Nutritions nutritions = new Nutritions(-10, 5, 5, 5, 5);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalFatArgument(){
+        Nutritions nutritions = new Nutritions(5, -10, 5, 5, 5);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalCarbohydrateArgument(){
+        Nutritions nutritions = new Nutritions(5, 5, -10, 5, 5);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalProteinArgument(){
+        Nutritions nutritions = new Nutritions(5, 5, 5, -10, 5);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalSaltArgument(){
+        Nutritions nutritions = new Nutritions(5, 5, 5, 5, -10);
+    }
+
     @Test
     public void equals() throws Exception{
         Nutritions sameNutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);

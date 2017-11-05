@@ -1,5 +1,7 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientItemException;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -52,6 +54,19 @@ public class IngredientTest {
         localIngredient.setQuantity(20.5f);
 
         assertEquals((long) localIngredient.getQuantity(), (long) 20.5f);
+    }
+
+    @Test(expected = NoIngredientItemException.class)
+    public void noIngredientTest() throws Exception {
+        Ingredient ingredient = new Ingredient(null, 10);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void illegalArgumentQuantity() throws Exception {
+        Nutritions nutritions = new Nutritions(2,2,2,2,2);
+        IngredientItem ingredientItem = new IngredientItem(1, "Teszt", nutritions
+                ,"teszt");
+        Ingredient ingredient = new Ingredient(ingredientItem, -2);
     }
 
     @Test
