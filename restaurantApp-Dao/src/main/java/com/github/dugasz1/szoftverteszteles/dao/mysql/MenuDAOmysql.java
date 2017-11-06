@@ -5,6 +5,11 @@ import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
 
 public class MenuDAOmysql implements MenuDAO{
 
+    @Override
+    public void createMenuItem(MenuItem menuItem) {
+
+    }
+
     public MenuItem getMenuItem(int id) {
         return null;
     }

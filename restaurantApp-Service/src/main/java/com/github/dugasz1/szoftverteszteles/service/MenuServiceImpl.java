@@ -9,6 +9,10 @@ public class MenuServiceImpl implements MenuService{
 
     public MenuServiceImpl(MenuDAO menuDAO){this.menuDao = menuDAO;}
 
+    public void createMenuItem(MenuItem menuItem) {
+        menuDao.createMenuItem(menuItem);
+    }
+
     public MenuItem getMenuItem(int id){
         return menuDao.getMenuItem(id);
     }
