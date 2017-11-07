@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.EmptyMenuitemException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoDateException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoMenuitemException;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
@@ -13,13 +14,13 @@ public class Order {
     private boolean completed;
     private Collection<MenuItem> menuItems;
 
-    public Order(int id, Date date, Collection<MenuItem> menuItems) throws NoDateException, NoMenuitemException {
+    public Order(int id, Date date, Collection<MenuItem> menuItems) throws NoDateException, NoMenuitemException, EmptyMenuitemException {
         if(date == null)
             throw new NoDateException("Date can not be null.");
         if(menuItems == null)
             throw new NoMenuitemException("Menuitem collection can not be null.");
         if(menuItems.isEmpty())
-            throw new IllegalArgumentException("Menuitem collection can not be empty.");
+            throw new EmptyMenuitemException("Menuitem collection can not be empty.");
 
         this.id = id;
         this.date = date;
