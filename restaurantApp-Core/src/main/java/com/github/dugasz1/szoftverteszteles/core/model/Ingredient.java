@@ -36,4 +36,22 @@ public class Ingredient {
             throw  new IllegalArgumentException("Quantity cannot be negative or zero.");
         this.quantity = quantity;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Ingredient that = (Ingredient) o;
+
+        if (Float.compare(that.quantity, quantity) != 0) return false;
+        return ingredientItem != null ? ingredientItem.equals(that.ingredientItem) : that.ingredientItem == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = ingredientItem != null ? ingredientItem.hashCode() : 0;
+        result = 31 * result + (quantity != +0.0f ? Float.floatToIntBits(quantity) : 0);
+        return result;
+    }
 }

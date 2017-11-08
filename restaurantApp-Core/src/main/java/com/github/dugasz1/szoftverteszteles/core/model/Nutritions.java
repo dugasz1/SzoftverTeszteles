@@ -74,16 +74,26 @@ public class Nutritions {
     }
 
     @Override
-    public  boolean equals(Object obj){
-        if(this == obj)
-            return true;
-        if(obj == null)
-            return false;
-        if(getClass() != obj.getClass())
-            return false;
-        Nutritions nutritions = (Nutritions) obj;
-        if(this.energy != nutritions.energy || this.fat != nutritions.fat || this.carbohydrate != nutritions.carbohydrate || this.protein != nutritions.protein || this.salt != nutritions.protein)
-            return false;
-        return true;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Nutritions that = (Nutritions) o;
+
+        if (Float.compare(that.energy, energy) != 0) return false;
+        if (Float.compare(that.fat, fat) != 0) return false;
+        if (Float.compare(that.carbohydrate, carbohydrate) != 0) return false;
+        if (Float.compare(that.protein, protein) != 0) return false;
+        return Float.compare(that.salt, salt) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (energy != +0.0f ? Float.floatToIntBits(energy) : 0);
+        result = 31 * result + (fat != +0.0f ? Float.floatToIntBits(fat) : 0);
+        result = 31 * result + (carbohydrate != +0.0f ? Float.floatToIntBits(carbohydrate) : 0);
+        result = 31 * result + (protein != +0.0f ? Float.floatToIntBits(protein) : 0);
+        result = 31 * result + (salt != +0.0f ? Float.floatToIntBits(salt) : 0);
+        return result;
     }
 }

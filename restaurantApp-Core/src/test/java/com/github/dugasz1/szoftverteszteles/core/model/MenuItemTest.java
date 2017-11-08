@@ -63,4 +63,6 @@ public class MenuItemTest {
         MenuItem sameMenuItem = new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
         assertTrue(sameMenuItem.equals(sameMenuItem));
     }
+
+
 }

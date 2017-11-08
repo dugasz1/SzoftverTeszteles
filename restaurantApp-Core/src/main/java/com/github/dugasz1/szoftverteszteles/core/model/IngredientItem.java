@@ -56,4 +56,26 @@ public class  IngredientItem {
     public void setUnit(String unit) {
         this.unit = unit;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        IngredientItem that = (IngredientItem) o;
+
+        if (id != that.id) return false;
+        if (!name.equals(that.name)) return false;
+        if (!nutrions.equals(that.nutrions)) return false;
+        return unit.equals(that.unit);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + name.hashCode();
+        result = 31 * result + nutrions.hashCode();
+        result = 31 * result + unit.hashCode();
+        return result;
+    }
 }
