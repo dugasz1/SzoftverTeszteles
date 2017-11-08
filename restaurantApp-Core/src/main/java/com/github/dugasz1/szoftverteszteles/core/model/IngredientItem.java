@@ -1,12 +1,13 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.EmptyNameException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 
 public class  IngredientItem {
     private int id;
     private String name;
-    private Nutritions nutrions;
+    private Nutritions nutritions;
     private String unit;
 
     /**
@@ -17,15 +18,10 @@ public class  IngredientItem {
      * @param unit
      */
 
-    public IngredientItem(int id, String name, Nutritions nutritions, String unit) throws NoNameException,NoIngredientException
-    {
-        if(name == null)
-            throw new NoNameException("Item must have a name.");
-        if(nutritions == null)
-            throw new NoIngredientException("Ingredient must contain one value.");
+    public IngredientItem(int id, String name, Nutritions nutritions, String unit) throws NoNameException, NoIngredientException, EmptyNameException {
         this.id = id;
-        this.name = name;
-        this.nutrions = nutritions;
+        setName(name);
+        setNutritions(nutritions);
         this.unit = unit;
     }
 
@@ -33,8 +29,8 @@ public class  IngredientItem {
         return id;
     }
 
-    public Nutritions getNutrions() {
-        return nutrions;
+    public Nutritions getNutritions() {
+        return nutritions;
     }
 
     public String getName() {
@@ -45,11 +41,17 @@ public class  IngredientItem {
         return unit;
     }
 
-    public void setNutrions(Nutritions nutrions) {
-        this.nutrions = nutrions;
+    public void setNutritions(Nutritions nutritions) throws NoIngredientException {
+        if(nutritions == null)
+            throw new NoIngredientException("Ingredient must contain one value.");
+        this.nutritions = nutritions;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws NoNameException, EmptyNameException {
+        if(name == null)
+            throw new NoNameException("Item must have a name.");
+        if(name == "")
+            throw new EmptyNameException("Item must have a name.");
         this.name = name;
     }
 
@@ -66,7 +68,7 @@ public class  IngredientItem {
 
         if (id != that.id) return false;
         if (!name.equals(that.name)) return false;
-        if (!nutrions.equals(that.nutrions)) return false;
+        if (!nutritions.equals(that.nutritions)) return false;
         return unit.equals(that.unit);
     }
 
@@ -74,7 +76,7 @@ public class  IngredientItem {
     public int hashCode() {
         int result = id;
         result = 31 * result + name.hashCode();
-        result = 31 * result + nutrions.hashCode();
+        result = 31 * result + nutritions.hashCode();
         result = 31 * result + unit.hashCode();
         return result;
     }

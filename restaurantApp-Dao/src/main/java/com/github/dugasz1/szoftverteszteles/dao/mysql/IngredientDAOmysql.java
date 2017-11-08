@@ -65,11 +65,11 @@ public class IngredientDAOmysql implements IngredientDAO {
         {
             PreparedStatement ps = conn.prepareStatement(updateSQL);
             ps.setString(1,recipe.getName());
-            ps.setFloat(2, recipe.getNutrions().getEnergy());
-            ps.setFloat(3, recipe.getNutrions().getFat());
-            ps.setFloat(4, recipe.getNutrions().getCarbohydrate());
-            ps.setFloat(5, recipe.getNutrions().getProtein());
-            ps.setFloat(6, recipe.getNutrions().getSalt());
+            ps.setFloat(2, recipe.getNutritions().getEnergy());
+            ps.setFloat(3, recipe.getNutritions().getFat());
+            ps.setFloat(4, recipe.getNutritions().getCarbohydrate());
+            ps.setFloat(5, recipe.getNutritions().getProtein());
+            ps.setFloat(6, recipe.getNutritions().getSalt());
             ps.setString(7, recipe.getUnit());
             ps.setInt(8, recipe.getId());
 

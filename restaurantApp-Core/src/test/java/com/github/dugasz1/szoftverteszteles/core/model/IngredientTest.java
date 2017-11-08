@@ -76,5 +76,4 @@ public class IngredientTest {
 
         assertTrue(testIngredient.equals(sameIngredient));
     }
-
 }
