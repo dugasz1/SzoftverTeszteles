@@ -1,8 +1,8 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientItemException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoDateException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoUserException;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 
@@ -15,9 +15,9 @@ public class WarehouseItem {
     private Date registered;
     private Date warrant;
 
-    public WarehouseItem(int id, IngredientItem ingredientItem, User user, Date registered, Date warrant) throws NoIngredientException, NoDateException, NoUserException {
+    public WarehouseItem(int id, IngredientItem ingredientItem, User user, Date registered, Date warrant) throws NoIngredientItemException, NoDateException, NoUserException {
         if ( ingredientItem == null )
-            throw new NoIngredientException("Ingredient item can not be null.");
+            throw new NoIngredientItemException("Ingredient item can not be null.");
         if( user == null )
             throw new NoUserException("User can not be null.");
         if( registered == null)
@@ -67,4 +67,20 @@ public class WarehouseItem {
     public void setWarrant(Date warrant) {
         this.warrant = warrant;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        WarehouseItem that = (WarehouseItem) o;
+
+        if (id != that.id) return false;
+        if (ingredientItem != null ? !ingredientItem.equals(that.ingredientItem) : that.ingredientItem != null)
+            return false;
+        if (user != null ? !user.equals(that.user) : that.user != null) return false;
+        if (registered != null ? !registered.equals(that.registered) : that.registered != null) return false;
+        return warrant != null ? warrant.equals(that.warrant) : that.warrant == null;
+    }
+
 }
