@@ -15,16 +15,9 @@ public class Order {
     private Collection<MenuItem> menuItems;
 
     public Order(int id, Date date, Collection<MenuItem> menuItems) throws NoDateException, NoMenuitemException, EmptyMenuitemException {
-        if(date == null)
-            throw new NoDateException("Date can not be null.");
-        if(menuItems == null)
-            throw new NoMenuitemException("Menuitem collection can not be null.");
-        if(menuItems.isEmpty())
-            throw new EmptyMenuitemException("Menuitem collection can not be empty.");
-
         this.id = id;
-        this.date = date;
-        this.menuItems = menuItems;
+        setDate(date);
+        setMenuItems(menuItems);
     }
 
     /**
@@ -47,7 +40,9 @@ public class Order {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Date date) throws NoDateException {
+        if(date == null)
+            throw new NoDateException("Date can not be null.");
         this.date = date;
     }
 
@@ -63,7 +58,11 @@ public class Order {
         return menuItems;
     }
 
-    public void setMenuItems(Collection<MenuItem> menuItems) {
+    public void setMenuItems(Collection<MenuItem> menuItems) throws NoMenuitemException, EmptyMenuitemException {
+        if(menuItems == null)
+            throw new NoMenuitemException("Menuitem collection can not be null.");
+        if(menuItems.isEmpty())
+            throw new EmptyMenuitemException("Menuitem collection can not be empty.");
         this.menuItems = menuItems;
     }
 }

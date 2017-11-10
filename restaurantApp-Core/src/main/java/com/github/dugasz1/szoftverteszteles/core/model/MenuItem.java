@@ -13,15 +13,10 @@ public class MenuItem {
      * @param price
      * @param recipe
      */
-    public MenuItem(int id,float price,Recipe recipe) throws NoRecipeException
-    {
-        if(price < 0)
-            throw new IllegalArgumentException("Price cannot be negative.");
-        if(recipe == null)
-            throw new NoRecipeException("MenuItem must have a Recipe.");
+    public MenuItem(int id,float price,Recipe recipe) throws NoRecipeException {
         this.id = id;
-        this.price = price;
-        this.recipe = recipe;
+        setPrice(price);
+        setRecipe(recipe);
     }
 
     @Override
@@ -51,11 +46,15 @@ public class MenuItem {
         return recipe;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(float price) throws IllegalArgumentException {
+        if(price < 0)
+            throw new IllegalArgumentException("Price cannot be negative.");
         this.price = price;
     }
 
-    public void setRecipe(Recipe recipe) {
+    public void setRecipe(Recipe recipe) throws NoRecipeException {
+        if(recipe == null)
+            throw new NoRecipeException("MenuItem must have a Recipe.");
         this.recipe = recipe;
     }
 }

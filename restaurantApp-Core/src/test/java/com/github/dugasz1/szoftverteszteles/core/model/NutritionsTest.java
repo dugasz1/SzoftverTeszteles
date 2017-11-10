@@ -106,5 +106,7 @@ public class NutritionsTest {
     @Test
     public void equals() throws Exception{
         Nutritions sameNutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
+
+        assertTrue(testNutritions.equals(sameNutritions));
     }
 }

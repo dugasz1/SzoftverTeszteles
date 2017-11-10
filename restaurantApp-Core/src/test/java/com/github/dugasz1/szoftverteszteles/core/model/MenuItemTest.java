@@ -1,8 +1,10 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoRecipeException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +65,14 @@ public class MenuItemTest {
         MenuItem sameMenuItem = new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
         assertTrue(sameMenuItem.equals(sameMenuItem));
     }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorIllegalArgument() throws Exception {
+        MenuItem localTestMenuItem = new MenuItem(2, -1.0f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
+    }
 
-
+    @Test(expected = NoRecipeException.class)
+    public void constructorNoRecipe() throws Exception {
+        MenuItem localTestMenuItem = new MenuItem(2, 1550.0f, null);
+    }
 }
