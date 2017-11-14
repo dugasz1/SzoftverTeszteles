@@ -6,9 +6,10 @@ import com.github.dugasz1.szoftverteszteles.core.service.MenuService;
 import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
 import org.easymock.EasyMock;
 import org.junit.Assume;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.Before;
+import org.junit.Test;
 
+import javax.swing.text.DefaultStyledDocument;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +20,7 @@ public class MenuServiceImplTest {
     private MenuServiceImpl menuService;
 
 
-    @BeforeMethod
+    @Before
     public void setUp() throws Exception {
         MenuDAO menuDAO = EasyMock.createNiceMock(MenuDAO.class);
         Nutritions nutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
@@ -30,19 +31,29 @@ public class MenuServiceImplTest {
         collection.add(ingredient);
         Recipe recipe = new Recipe(1,category,collection);
         MenuItem menuItem = new MenuItem(1,2000.0f,recipe);
-
-
-        try {
-            EasyMock.expect(menuDAO.getMenuItem(1)).andReturn(menuItem);
-        } catch (Exception e) {
-            Assume.assumeNoException(e);
-        }
+        EasyMock.expect(menuDAO.getMenuItem(1)).andReturn(menuItem);
         EasyMock.replay(menuDAO);
         menuService = new MenuServiceImpl(menuDAO);
+        /*
+        menuDAO.createMenuItem(menuItem);
+        EasyMock.expectLastCall();
+        EasyMock.replay(menuDAO);
+        menuDAO.createMenuItem(menuItem);
+        */
+
     }
 
     @Test
     public void testCreateMenuItem() throws Exception {
+       /* Nutritions nutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
+        IngredientItem ingredientItem = new IngredientItem(1,"testIngredientItem",nutritions,"testUnit");
+        Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
+        Category category = new Category(1,"testCategory");
+        Collection collection= new ArrayList<Ingredient>();
+        collection.add(ingredient);
+        Recipe recipe = new Recipe(1,category,collection);
+        MenuItem localMenuItem = new MenuItem(1,2000.0f,recipe);
+        //assertEquals(menuService.createMenuItem(localMenuItem),localMenuItem);*/
     }
 
     @Test
