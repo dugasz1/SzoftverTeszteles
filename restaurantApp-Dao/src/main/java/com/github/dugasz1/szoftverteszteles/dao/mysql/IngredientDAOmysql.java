@@ -48,6 +48,8 @@ public class IngredientDAOmysql implements IngredientDAO {
         }
         catch (SQLException e) {
             throw new StorageException();
+        } catch (EmptyNameException e) {
+            e.printStackTrace();
         }
         return ingredient;
     }
