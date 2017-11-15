@@ -69,18 +69,19 @@ public class WarehouseItem {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        WarehouseItem that = (WarehouseItem) o;
-
-        if (id != that.id) return false;
-        if (ingredientItem != null ? !ingredientItem.equals(that.ingredientItem) : that.ingredientItem != null)
+    public boolean equals(Object obj) {
+        if(this == obj)
+            return true;
+        if(obj == null)
             return false;
-        if (user != null ? !user.equals(that.user) : that.user != null) return false;
-        if (registered != null ? !registered.equals(that.registered) : that.registered != null) return false;
-        return warrant != null ? warrant.equals(that.warrant) : that.warrant == null;
+        if(getClass() != obj.getClass())
+            return false;
+
+        WarehouseItem wItem = (WarehouseItem)obj;
+        if(this.id != wItem.id || !this.ingredientItem.equals(wItem.ingredientItem) || !this.registered.equals(wItem.registered) ||
+                !this.warrant.equals(wItem.warrant) || !this.user.equals(wItem.user))
+            return false;
+        return true;
     }
 
 }
