@@ -10,11 +10,13 @@ import java.util.Date;
 
 public class WarehouseItemTest {
     private WarehouseItem testWarehouseItem = null;
+    private IngredientItem testIngredientItem = null;
 
     @Before
     public void setUp() throws Exception{
-        testWarehouseItem = new WarehouseItem(1, new IngredientItem(1, "testingredientitem",
-                new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "testunit"), new User(1, "tesztuser"),
+        testIngredientItem = new IngredientItem(1, "testingredientitem",
+                new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "testunit");
+        testWarehouseItem = new WarehouseItem(1, testIngredientItem, new User(1, "tesztuser"),
                         new Date(2017-11-8), new Date(2017-12-8));
     }
 
@@ -108,5 +110,28 @@ public class WarehouseItemTest {
         WarehouseItem localWarehouseItem = new WarehouseItem(1, new IngredientItem(1, "testingredientitem",
                 new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f), "testunit"), new User(1, "tesztuser"),
                 new Date(2017-11-8), null);
+    }
+
+    @Test
+    public void notEquals() throws Exception {
+        WarehouseItem notSameWHItem = new WarehouseItem(22, testIngredientItem, new User(2, "tuser"),
+                new Date(2017-12-26), new Date(2018-12-26));
+        assertFalse(testWarehouseItem.equals(notSameWHItem));
+    }
+
+    @Test
+    public void equalsWrongObj() throws Exception {
+        Category category = new Category(1, "tcat");
+        assertFalse(testWarehouseItem.equals(category));
+    }
+
+    @Test
+    public void equalsNull() throws Exception {
+        assertFalse(testWarehouseItem.equals(null));
+    }
+
+    @Test
+    public void equalsSameObject() throws Exception {
+        assertTrue(testWarehouseItem.equals(testWarehouseItem));
     }
 }

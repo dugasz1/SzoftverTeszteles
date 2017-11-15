@@ -36,4 +36,26 @@ public class UserTest {
         assertTrue(testUser.equals(sameUser));
     }
 
+    @Test
+    public void notEquals() throws Exception {
+        User notsameUser = new User(22, "testuuuuser");
+        assertFalse(testUser.equals(notsameUser));
+    }
+
+    @Test
+    public void equalsWrongObj() throws Exception {
+        Category category = new Category(1, "tcat");
+        assertFalse(testUser.equals(category));
+    }
+
+    @Test
+    public void equalsNull() throws Exception {
+        assertFalse(testUser.equals(null));
+    }
+
+    @Test
+    public void equalsSameObject() throws Exception {
+        assertTrue(testUser.equals(testUser));
+    }
+
 }
