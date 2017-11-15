@@ -46,7 +46,7 @@ public class Category {
         if(getClass() != obj.getClass())
             return false;
         Category category = (Category)obj;
-        if(this.id != category.id || this.name != category.name)
+        if(this.id != category.id || !this.name.equals(category.name))
             return false;
         return true;
     }

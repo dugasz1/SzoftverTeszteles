@@ -45,6 +45,28 @@ public class CategoryTest {
         assertTrue(testCategory.equals(sameCategory));
     }
 
+    @Test
+    public void notEquals() throws Exception {
+        Category notSameCat = new Category(2, "testcategory");
+        assertFalse(testCategory.equals(notSameCat));
+    }
+
+    @Test
+    public void equalsWrongObj() throws Exception {
+        User user = new User(1, "teszt");
+        assertFalse(testCategory.equals(user));
+    }
+
+    @Test
+    public void equalsNull() throws Exception {
+        assertFalse(testCategory.equals(null));
+    }
+
+    @Test
+    public void equalsSameObject() throws Exception {
+        assertTrue(testCategory.equals(testCategory));
+    }
+
     @Test(expected = NoNameException.class)
     public void constructorNoName() throws Exception{
         Category category = new Category(1, null);
