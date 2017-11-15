@@ -52,7 +52,7 @@ public class Recipe {
         if(getClass() != obj.getClass())
             return false;
         Recipe recipe = (Recipe) obj;
-        if(this.id != recipe.id || !this.category.equals(recipe.category) || this.ingredients != recipe.ingredients)
+        if(this.id != recipe.id || !this.category.equals(recipe.category) || !this.ingredients.equals(recipe.ingredients))
             return false;
         return true;
     }

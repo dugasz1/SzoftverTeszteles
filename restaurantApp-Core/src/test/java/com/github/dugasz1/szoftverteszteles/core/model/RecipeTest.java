@@ -1,8 +1,11 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayDeque;
 import java.util.Collection;
 import java.util.HashSet;
 
@@ -21,8 +24,22 @@ public class RecipeTest {
                         new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "testunit2"), 1.6f));
 
         testRecipe = new Recipe(1, new Category(1,"testcategory"), ingredients);
-        }
+    }
 
+    @Test(expected = NoCategoryException.class)
+    public void constructorNoCategoryException () throws Exception{
+        Recipe recipe = new Recipe(1, null, ingredients);
+    }
+
+    @Test(expected = NoIngredientException.class)
+    public void constructorNoIngredientException () throws Exception{
+        Recipe recipe = new Recipe(1, new Category(1, "a"), null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorEmptryIngredients () throws Exception{
+        Recipe recipe = new Recipe(1, new Category(1, "a"), new ArrayDeque<Ingredient>());
+    }
 
     @Test
     public void getId() throws Exception{
@@ -62,6 +79,28 @@ public class RecipeTest {
                 new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "localtestunit2"), 1.6f));
         testRecipe.setIngredients(localIngredients);
         assertEquals(testRecipe.getIngredients(), localIngredients);
+    }
+
+    @Test
+    public void notEquals() throws Exception {
+        Recipe notSameRecipe = new Recipe(22, new Category(22, "Notsame"), ingredients);
+        assertFalse(notSameRecipe.equals(testRecipe));
+    }
+
+    @Test
+    public void equalsWrongObj() throws Exception {
+        User user = new User(1, "teszt");
+        assertFalse(testRecipe.equals(user));
+    }
+
+    @Test
+    public void equalsNull() throws Exception {
+        assertFalse(testRecipe.equals(null));
+    }
+
+    @Test
+    public void equalsSameObject() throws Exception {
+        assertTrue(testRecipe.equals(testRecipe));
     }
 
     @Test
