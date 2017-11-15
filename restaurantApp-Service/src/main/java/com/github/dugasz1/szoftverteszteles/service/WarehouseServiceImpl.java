@@ -11,11 +11,11 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
-public class Warehouseimpl implements WarehouseService {
+public class WarehouseServiceImpl implements WarehouseService {
 
     private WarehouseDAO warehouseDAO = null;
 
-    public Warehouseimpl(WarehouseDAO warehouseDAO) {
+    public WarehouseServiceImpl(WarehouseDAO warehouseDAO) {
         this.warehouseDAO = warehouseDAO;
     }
 

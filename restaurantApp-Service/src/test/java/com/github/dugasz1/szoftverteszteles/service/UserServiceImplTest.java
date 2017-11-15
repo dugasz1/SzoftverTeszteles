@@ -15,11 +15,8 @@ public class UserServiceImplTest {
     @Before
     public void setUp() throws Exception {
         UserDAO userDAO = EasyMock.createNiceMock(UserDAO.class);
-        try {
-            EasyMock.expect(userDAO.createUser("tesztuser")).andReturn(new User(1, "tesztuser"));
-        } catch (Exception e) {
-            Assume.assumeNoException(e);
-        }
+        EasyMock.expect(userDAO.createUser("tesztuser")).andReturn(new User(1, "tesztuser"));
+
         EasyMock.replay(userDAO);
 
         userService = new UserServiceImpl(userDAO);
