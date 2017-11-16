@@ -10,17 +10,10 @@ public class Recipe {
     private Category category;
     private Collection<Ingredient> ingredients;
 
-    public Recipe (int id, Category category, Collection<Ingredient> ingredients)throws NoIngredientException,NoCategoryException{
-        if(category == null)
-            throw new NoCategoryException("Recipe must have a Category");
-        if(ingredients == null)
-            throw new NoIngredientException("Recipe must have an Ingredients.");
-        if(ingredients.isEmpty())
-            throw new IllegalArgumentException("Recipe must contain at least one ingredient.");
-
+    public Recipe (int id, Category category, Collection<Ingredient> ingredients)throws NoIngredientException, NoCategoryException{
         this.id = id;
-        this.category = category;
-        this.ingredients = ingredients;
+        setCategory(category);
+        setIngredients(ingredients);
     }
 
     public int getId() {
@@ -31,7 +24,9 @@ public class Recipe {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(Category category) throws NoCategoryException {
+        if(category == null)
+            throw new NoCategoryException("Recipe must have a Category");
         this.category = category;
     }
 
@@ -39,7 +34,12 @@ public class Recipe {
         return ingredients;
     }
 
-    public void setIngredients(Collection<Ingredient> ingredients) {
+    public void setIngredients(Collection<Ingredient> ingredients) throws NoIngredientException, IllegalArgumentException {
+        if(ingredients == null)
+            throw new NoIngredientException("Recipe must have an Ingredients.");
+        if(ingredients.isEmpty())
+            throw new IllegalArgumentException("Recipe must contain at least one ingredient.");
+
         this.ingredients = ingredients;
     }
 

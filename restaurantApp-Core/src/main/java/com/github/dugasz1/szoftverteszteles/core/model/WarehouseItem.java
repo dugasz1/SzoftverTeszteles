@@ -16,20 +16,11 @@ public class WarehouseItem {
     private Date warrant;
 
     public WarehouseItem(int id, IngredientItem ingredientItem, User user, Date registered, Date warrant) throws NoIngredientItemException, NoDateException, NoUserException {
-        if ( ingredientItem == null )
-            throw new NoIngredientItemException("Ingredient item can not be null.");
-        if( user == null )
-            throw new NoUserException("User can not be null.");
-        if( registered == null)
-            throw new NoDateException("Registered date can not be null.");
-        if( warrant == null )
-            throw new NoDateException("Warrant date can not be null.");
-
         this.id = id;
-        this.ingredientItem = ingredientItem;
-        this.user = user;
-        this.registered = registered;
-        this.warrant = warrant;
+        setIngredientItem(ingredientItem);
+        setUser(user);
+        setRegistered(registered);
+        setWarrant(warrant);
     }
 
     public int getId(){
@@ -40,7 +31,9 @@ public class WarehouseItem {
         return ingredientItem;
     }
 
-    public void setIngredientItem(IngredientItem ingredientItem) {
+    public void setIngredientItem(IngredientItem ingredientItem) throws NoIngredientItemException {
+        if ( ingredientItem == null )
+            throw new NoIngredientItemException("Ingredient item can not be null.");
         this.ingredientItem = ingredientItem;
     }
 
@@ -48,7 +41,9 @@ public class WarehouseItem {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(User user) throws NoUserException {
+        if( user == null )
+            throw new NoUserException("User can not be null.");
         this.user = user;
     }
 
@@ -56,7 +51,9 @@ public class WarehouseItem {
         return registered;
     }
 
-    public void setRegistered(Date registered) {
+    public void setRegistered(Date registered) throws NoDateException {
+        if( registered == null)
+            throw new NoDateException("Registered date can not be null.");
         this.registered = registered;
     }
 
@@ -64,7 +61,9 @@ public class WarehouseItem {
         return warrant;
     }
 
-    public void setWarrant(Date warrant) {
+    public void setWarrant(Date warrant) throws NoDateException {
+        if( warrant == null )
+            throw new NoDateException("Warrant date can not be null.");
         this.warrant = warrant;
     }
 
@@ -83,5 +82,4 @@ public class WarehouseItem {
             return false;
         return true;
     }
-
 }
