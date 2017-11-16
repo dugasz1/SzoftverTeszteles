@@ -21,15 +21,15 @@ public class MenuServiceImpl implements MenuService{
         return menuDao.updateMenuItem(id);
     }
 
-    public boolean updateMenuItem(MenuItem recipe) {
-        return menuDao.updateMenuItem(recipe);
+    public boolean updateMenuItem(MenuItem menuItem) {
+        return menuDao.updateMenuItem(menuItem);
     }
 
     public boolean deleteMenuItem(int id) {
         return deleteMenuItem(id);
     }
 
-    public boolean deleteMenuItem(MenuItem recipe) {
-        return deleteMenuItem(recipe);
+    public boolean deleteMenuItem(MenuItem menuItem) {
+        return deleteMenuItem(menuItem);
     }
 }

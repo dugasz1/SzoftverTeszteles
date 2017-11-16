@@ -18,7 +18,7 @@ public class MenuDAOmysql implements MenuDAO{
         return false;
     }
 
-    public boolean updateMenuItem(MenuItem recipe) {
+    public boolean updateMenuItem(MenuItem menuItem) {
         return false;
     }
 
@@ -26,7 +26,7 @@ public class MenuDAOmysql implements MenuDAO{
         return false;
     }
 
-    public boolean deleteMenuItem(MenuItem recipe) {
+    public boolean deleteMenuItem(MenuItem menuItem) {
         return false;
     }
 }
