@@ -17,4 +17,11 @@
 
     <packaging>pom</packaging>
 
+    <properties>
+        <junit.version>4.12</junit.version>
+        <easymock.version>3.5</easymock.version>
+        <maven.surefire.plugin.version>2.12.4</maven.surefire.plugin.version>
+        <maven.build.version>1.7</maven.build.version>
+    </properties>
+
 </project>
