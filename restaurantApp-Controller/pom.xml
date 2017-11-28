@@ -11,5 +11,11 @@
 
     <artifactId>restaurantApp-Controller</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.github.dugasz1.szoftverteszteles</groupId>
+            <artifactId>restaurantApp-Service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
