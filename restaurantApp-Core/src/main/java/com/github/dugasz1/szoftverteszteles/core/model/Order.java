@@ -65,4 +65,26 @@ public class Order {
             throw new EmptyMenuitemException("Menuitem collection can not be empty.");
         this.menuItems = menuItems;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        if (id != order.id) return false;
+        if (completed != order.completed) return false;
+        if (date != null ? !date.equals(order.date) : order.date != null) return false;
+        return menuItems != null ? menuItems.equals(order.menuItems) : order.menuItems == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (completed ? 1 : 0);
+        result = 31 * result + (menuItems != null ? menuItems.hashCode() : 0);
+        return result;
+    }
 }
