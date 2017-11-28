@@ -14,7 +14,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Example property (&amp; = &) -->
-        <mysql.connection.string>jdbc:mysql://host/database?user=exampleuser&amp;password=examplepassword</mysql.connection.string>
+        <mysql.connection.string>jdbc:mysql://host/dbname?user=exampleUsername&amp;password=examplePassword&amp;allowMultiQueries=true&amp;serverTimezone=UTC</mysql.connection.string>
     </properties>
 
     <dependencies>
