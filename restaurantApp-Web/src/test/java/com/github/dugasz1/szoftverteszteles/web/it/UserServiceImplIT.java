@@ -50,6 +50,16 @@ public class UserServiceImplIT {
         Assert.assertTrue(actual.equals(expected));
     }
 
+    @Test
+    public void updateUser() throws Exception {
+        User base = userService.getUser(1);
+        base.setName("New name");
+        userService.updateUser(base);
+        User updated = userService.getUser(1);
+
+        Assert.assertTrue(updated.getName().equals(base.getName()));
+    }
+
     @Test(expected = NotFoundException.class)
     public void getNotExistingUser() throws Exception {
         userService.getUser(55);
