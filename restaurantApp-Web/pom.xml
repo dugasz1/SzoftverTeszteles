@@ -52,6 +52,9 @@
                         <configuration>
                             <systemPropertyVariables>
                                 <mysql_connection_string>${mysql.connection.string}</mysql_connection_string>
+
+                                <mysql_file_user_setup>${mysql.file.user.setup}</mysql_file_user_setup>
+                                <mysql_file_user_teardown>${mysql.file.user.teardown}</mysql_file_user_teardown>
                             </systemPropertyVariables>
                             <excludes>
                                 <exclude>none</exclude>
@@ -63,12 +66,24 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <!-- Example property (&amp; = &) -->
+        <!-- Example property (&amp; = &)
+             Do not modify this. Create a profile in your HOME/.m2/settings.xml-->
         <mysql.connection.string>jdbc:mysql://host/database?user=exampleuser&amp;password=examplepassword</mysql.connection.string>
+
+        <mysql.file.user.setup>src/test/resources/user_setup.sql</mysql.file.user.setup>
+        <mysql.file.user.teardown>src/test/resources/user_teardown.sql</mysql.file.user.teardown>
     </properties>
 </project>

@@ -14,10 +14,6 @@ public class UserServiceImplIT {
     private static Connection conn;
     private static UserService userService;
 
-    private static final String SET_UP_QUERY = "INSERT INTO `user` (`id`, `username`) VALUES(NULL, \"Teszt User\");";
-    private static final String TEAR_DOWN_QUERY = "SET FOREIGN_KEY_CHECKS = 0;" +
-            "TRUNCATE `user`;" +
-            "SET FOREIGN_KEY_CHECKS = 1;";
 
     @BeforeClass
     public static void setUpClass() throws Exception {
@@ -29,23 +25,18 @@ public class UserServiceImplIT {
 
     @Before
     public void setUp () throws Exception{
-        Statement statement = conn.createStatement();
-        statement.execute(SET_UP_QUERY);
+        TestUtil.executeSQLFile(conn, System.getProperty("mysql_file_user_setup"));
     }
 
     @After
     public void tearDown() throws  Exception{
-        Statement statement = conn.createStatement();
-        statement.execute(TEAR_DOWN_QUERY);
+        TestUtil.executeSQLFile(conn, System.getProperty("mysql_file_user_teardown"));
     }
 
     @Test
     public void getUserById() throws Exception {
         User actual = userService.getUser(1);
         User expected = new User(1, "Teszt User");
-
-        System.out.println("actual: " + actual.toString());
-        System.out.println("expected: " + expected.toString());
 
         Assert.assertTrue(actual.equals(expected));
     }
