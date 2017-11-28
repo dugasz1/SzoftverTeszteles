@@ -50,6 +50,7 @@ public class UserDAOmysql implements UserDAO {
 
         return user;
     }
+
     public User getUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
         String name = null;
         User user = null;
@@ -71,10 +72,10 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvaibleException(e.getMessage(), e);
         }
         catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e.getMessage(), e);
         }
         return user;
     }
@@ -85,7 +86,7 @@ public class UserDAOmysql implements UserDAO {
         PreparedStatement ps = null;
         try
         {
-            ps = conn.prepareStatement("SELECT username FROM user WHERE username = ?");
+            ps = conn.prepareStatement("SELECT * FROM user WHERE username = ?");
             ps.setString(1, name);
             ResultSet rs = ps.executeQuery();
             boolean isExist = rs.next();
@@ -101,10 +102,10 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvaibleException(e);
         }
         catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         }
         return user;
     }

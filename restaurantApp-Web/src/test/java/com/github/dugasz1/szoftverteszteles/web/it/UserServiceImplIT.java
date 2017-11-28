@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.web.it;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.service.UserService;
 import com.github.dugasz1.szoftverteszteles.dao.mysql.ConnectionManager;
@@ -40,6 +41,21 @@ public class UserServiceImplIT {
 
         Assert.assertTrue(actual.equals(expected));
     }
+
+    @Test
+    public void getUserByName() throws Exception {
+        User actual = userService.getUser("Répási Kristóf");
+        User expected = new User(8, "Répási Kristóf");
+
+        Assert.assertTrue(actual.equals(expected));
+    }
+
+    @Test(expected = NotFoundException.class)
+    public void getNotExistingUser() throws Exception {
+        userService.getUser(55);
+    }
+
+
 
     @AfterClass
     public static void tearDownClass() throws Exception {
