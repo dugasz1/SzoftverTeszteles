@@ -35,8 +35,16 @@ public class User {
         if(getClass() != obj.getClass())
             return false;
         User user = (User)obj;
-        if(this.id != user.id || this.name !=user.name)
+        if(this.id != user.id || !this.name.equals(user.name))
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
