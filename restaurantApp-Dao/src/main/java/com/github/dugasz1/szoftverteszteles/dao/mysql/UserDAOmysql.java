@@ -1,9 +1,9 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.AlreadyExistingException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageNotAvaibleException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.AlreadyExistingException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvailableException;
 import com.github.dugasz1.szoftverteszteles.service.dao.UserDAO;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
@@ -17,7 +17,7 @@ public class UserDAOmysql implements UserDAO {
         this.conn = conn;
     }
 
-    public User createUser(String name) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
+    public User createUser(String name) throws StorageNotAvailableException, AlreadyExistingException, StorageException {
         String insertSQL = "Insert into user (username) VALUES (?)";
         int last_id = 0;
         User user = null;
@@ -38,7 +38,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvailableException();
         }
         catch(SQLIntegrityConstraintViolationException e){
             throw new AlreadyExistingException();
@@ -51,7 +51,7 @@ public class UserDAOmysql implements UserDAO {
         return user;
     }
 
-    public User getUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
+    public User getUser(int id) throws StorageNotAvailableException, StorageException, NotFoundException {
         String name = null;
         User user = null;
         PreparedStatement ps = null;
@@ -72,7 +72,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException(e.getMessage(), e);
+            throw new StorageNotAvailableException(e.getMessage(), e);
         }
         catch (SQLException e) {
             throw new StorageException(e.getMessage(), e);
@@ -80,7 +80,7 @@ public class UserDAOmysql implements UserDAO {
         return user;
     }
 
-    public User getUser(String name) throws StorageNotAvaibleException, NotFoundException, StorageException {
+    public User getUser(String name) throws StorageNotAvailableException, NotFoundException, StorageException {
         int id;
         User user = null;
         PreparedStatement ps = null;
@@ -102,7 +102,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException(e);
+            throw new StorageNotAvailableException(e);
         }
         catch (SQLException e) {
             throw new StorageException(e);
@@ -110,7 +110,7 @@ public class UserDAOmysql implements UserDAO {
         return user;
     }
 
-    public boolean updateUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException {
+    public boolean updateUser(User user) throws StorageNotAvailableException, AlreadyExistingException, StorageException, NotFoundException {
         String updateSQL = "UPDATE user SET username = ? WHERE id = ?";
         try
         {
@@ -124,7 +124,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvailableException();
         }
         catch(SQLIntegrityConstraintViolationException e)
         {
@@ -137,7 +137,7 @@ public class UserDAOmysql implements UserDAO {
         return true;
     }
 
-    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
+    public boolean deleteUser(int id) throws StorageNotAvailableException, StorageException, NotFoundException {
         String deleteSQL = "DELETE FROM user WHERE id = ?";
         try
         {
@@ -150,7 +150,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvailableException();
         }
         catch (SQLException e)
         {
@@ -159,7 +159,7 @@ public class UserDAOmysql implements UserDAO {
         return true;
     }
 
-    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException {
+    public boolean deleteUser(User user) throws StorageNotAvailableException, NotFoundException, StorageException {
         String deleteSQL = "DELETE FROM user WHERE username = ?";
         try
         {
@@ -172,7 +172,7 @@ public class UserDAOmysql implements UserDAO {
         }
         catch (CommunicationsException e)
         {
-            throw new StorageNotAvaibleException();
+            throw new StorageNotAvailableException();
         }
         catch (SQLException e)
         {

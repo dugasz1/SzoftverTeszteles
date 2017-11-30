@@ -8,13 +8,13 @@ import java.util.Collection;
 import java.util.Dictionary;
 
 public interface OrderDAO {
-    public Order createOrder(Dictionary<MenuItem, Integer> menuItems);
+    Order createOrder(Dictionary<MenuItem, Integer> menuItems);
 
-    public Order getOrder(int id);
-    public Collection<Order> getByUser(User user);
+    Order getOrder(int id);
+    Collection<Order> getByUser(User user);
 
-    public boolean updateOrder(Order order);
+    boolean updateOrder(Order order);
 
-    public Order deleteOrder(int id);
-    public Order deleteOrder(Order order);
+    Order deleteOrder(int id);
+    Order deleteOrder(Order order);
 }

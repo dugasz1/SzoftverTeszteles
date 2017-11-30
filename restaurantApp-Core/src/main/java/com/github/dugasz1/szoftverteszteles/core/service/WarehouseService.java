@@ -10,27 +10,27 @@ import java.util.Date;
 import java.util.Map;
 
 public interface WarehouseService {
-    public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
+    WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
 
     /**
      * Collects how much ingredient will be consumed by the order.
      * @param order The order.
      * @return
      */
-    public Map<WarehouseItem, Float> calculateOrderConsume(Order order);
+    Map<WarehouseItem, Float> calculateOrderConsume(Order order);
 
-    public Collection<WarehouseItem> getCloseToWarrant(Date date);
+    Collection<WarehouseItem> getCloseToWarrant(Date date);
 
-    public WarehouseItem getWarehouseItem(int id);
-    public Collection<WarehouseItem> getByUser( User user);
+    WarehouseItem getWarehouseItem(int id);
+    Collection<WarehouseItem> getByUser(User user);
 
-    public Collection<WarehouseItem> getByRegisteredDate(Date from, Date until);
-    public Collection<WarehouseItem> getByWarrantDate(Date from, Date until);
+    Collection<WarehouseItem> getByRegisteredDate(Date from, Date until);
+    Collection<WarehouseItem> getByWarrantDate(Date from, Date until);
 
-    public boolean updateWarehouseItem(int id);
-    public boolean updateWarehouseItem(WarehouseItem warehouseItem);
+    boolean updateWarehouseItem(int id);
+    boolean updateWarehouseItem(WarehouseItem warehouseItem);
 
-    public boolean deleteWarehouseItem(int id);
-    public boolean deleteWarehouseItem(WarehouseItem warehouseItem);
+    boolean deleteWarehouseItem(int id);
+    boolean deleteWarehouseItem(WarehouseItem warehouseItem);
     
 }

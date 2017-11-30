@@ -2,13 +2,16 @@ package com.github.dugasz1.szoftverteszteles.service.dao;
 
 import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
 import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvaibleException;
 
 public interface RecipeDAO {
-    public Recipe getRecipe(int id) throws NotFoundException, StorageNotAvaibleException, StorageException, NoNameException, NoCategoryException, NoIngredientException;
+    Recipe getRecipe(int id) throws NotFoundException, StorageNotAvaibleException, StorageException, NoNameException, NoCategoryException, NoIngredientException;
 
-    public boolean updateRecipe(int id);
-    public boolean updateRecipe(Recipe recipe);
+    boolean updateRecipe(int id);
+    boolean updateRecipe(Recipe recipe);
 
-    public boolean deleteRecipe(int id);
-    public boolean deleteRecipe(Recipe recipe);
+    boolean deleteRecipe(int id);
+    boolean deleteRecipe(Recipe recipe);
 }

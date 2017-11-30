@@ -8,14 +8,16 @@ import java.util.Collection;
 import java.util.Dictionary;
 
 public interface OrderService {
-    public Order createOrder(Dictionary<MenuItem, Integer> menuItems);
+    Order createOrder(Dictionary<MenuItem, Integer> menuItems);
 
-    public Order getOrder(int id);
-    public Collection<Order> getByUser(User user);
+    Order getOrder(int id);
 
-    public boolean updateOrder(Order order);
+    Collection<Order> getByUser(User user);
 
-    public Order deleteOrder(int id);
-    public Order deleteOrder(Order order);
+    boolean updateOrder(Order order);
+
+    Order deleteOrder(int id);
+
+    Order deleteOrder(Order order);
 
 }

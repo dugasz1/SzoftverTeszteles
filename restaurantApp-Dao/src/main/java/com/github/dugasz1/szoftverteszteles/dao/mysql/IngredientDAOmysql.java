@@ -1,11 +1,13 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.EmptyNameException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
-
 import com.github.dugasz1.szoftverteszteles.core.model.Nutritions;
 import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.sql.*;
@@ -13,43 +15,34 @@ import java.sql.*;
 public class IngredientDAOmysql implements IngredientDAO {
     private Connection conn;
 
-
-    public IngredientDAOmysql (Connection conn){
-
+    public IngredientDAOmysql(Connection conn) {
         this.conn = conn;
-
     }
 
 
-    public IngredientItem getIngredientItem(int id) throws NoIngredientException, NoNameException, NotFoundException, StorageNotAvaibleException, StorageException {
+    public IngredientItem getIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, WrongFormatException {
         String selectSQL = "SELECT * FROM ingredient WHERE id = ?";
         PreparedStatement ps = null;
         IngredientItem ingredient = null;
-        try
-        {
+        try {
             ps = conn.prepareStatement(selectSQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             boolean isExist = rs.next();
-            if (isExist)
-            {
+            if (isExist) {
                 ingredient = new IngredientItem(rs.getInt("id"), rs.getString("name"),
-                        new Nutritions(rs.getFloat("energy"), rs.getFloat("fat"),rs.getFloat("carbohydrate"),
-                                rs.getFloat("protein"),rs.getFloat("salt")),
+                        new Nutritions(rs.getFloat("energy"), rs.getFloat("fat"), rs.getFloat("carbohydrate"),
+                                rs.getFloat("protein"), rs.getFloat("salt")),
                         rs.getString("unit"));
-            }
-            else {
+            } else {
                 throw new NotFoundException();
             }
-        }
-        catch (CommunicationsException e)
-        {
-            throw new StorageNotAvaibleException();
-        }
-        catch (SQLException e) {
+        } catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        } catch (SQLException e) {
             throw new StorageException();
-        } catch (EmptyNameException e) {
-            e.printStackTrace();
+        } catch (EmptyNameException | NoNameException | NoIngredientException e) {
+            throw new WrongFormatException();
         }
         return ingredient;
     }
@@ -57,16 +50,14 @@ public class IngredientDAOmysql implements IngredientDAO {
 
     public boolean updateIngredientItem(int id) {
         return false;
-
     }
 
 
-    public boolean updateIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvaibleException, AlreadyExistingException, StorageException {
+    public boolean updateIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException {
         String updateSQL = "UPDATE ingredient SET name = ?, energy = ?, fat = ?, carbohydrate = ?, protein = ?, salt = ?, unit = ?  WHERE id = ?";
-        try
-        {
+        try {
             PreparedStatement ps = conn.prepareStatement(updateSQL);
-            ps.setString(1,recipe.getName());
+            ps.setString(1, recipe.getName());
             ps.setFloat(2, recipe.getNutritions().getEnergy());
             ps.setFloat(3, recipe.getNutritions().getFat());
             ps.setFloat(4, recipe.getNutritions().getCarbohydrate());
@@ -75,45 +66,31 @@ public class IngredientDAOmysql implements IngredientDAO {
             ps.setString(7, recipe.getUnit());
             ps.setInt(8, recipe.getId());
 
-            if(ps.executeUpdate() == 0)
-            {
+            if (ps.executeUpdate() == 0) {
                 throw new NotFoundException();
             }
-        }
-        catch (CommunicationsException e)
-        {
-            throw new StorageNotAvaibleException();
-        }
-        catch(SQLIntegrityConstraintViolationException e)
-        {
+        } catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        } catch (SQLIntegrityConstraintViolationException e) {
             throw new AlreadyExistingException();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             throw new StorageException();
         }
         return true;
-
     }
 
 
-    public boolean deleteIngredientItem(int id) throws NotFoundException, StorageNotAvaibleException, StorageException {
+    public boolean deleteIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException {
         String deleteSQL = "DELETE FROM ingredient WHERE id = ?";
-        try
-        {
+        try {
             PreparedStatement ps = conn.prepareStatement(deleteSQL);
             ps.setInt(1, id);
-            if(ps.executeUpdate() == 0)
-            {
+            if (ps.executeUpdate() == 0) {
                 throw new NotFoundException();
             }
-        }
-        catch (CommunicationsException e)
-        {
-            throw new StorageNotAvaibleException();
-        }
-        catch (SQLException e)
-        {
+        } catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        } catch (SQLException e) {
             throw new StorageException();
         }
         return true;
@@ -121,23 +98,17 @@ public class IngredientDAOmysql implements IngredientDAO {
     }
 
 
-    public boolean deleteIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvaibleException, StorageException {
+    public boolean deleteIngredientItem(IngredientItem recipe) throws NotFoundException, StorageNotAvailableException, StorageException {
         String deleteSQL = "DELETE FROM ingredient WHERE name = ?";
-        try
-        {
+        try {
             PreparedStatement ps = conn.prepareStatement(deleteSQL);
             ps.setString(1, recipe.getName());
-            if(ps.executeUpdate() == 0)
-            {
+            if (ps.executeUpdate() == 0) {
                 throw new NotFoundException();
             }
-        }
-        catch (CommunicationsException e)
-        {
-            throw new StorageNotAvaibleException();
-        }
-        catch (SQLException e)
-        {
+        } catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        } catch (SQLException e) {
             throw new StorageException();
         }
         return true;

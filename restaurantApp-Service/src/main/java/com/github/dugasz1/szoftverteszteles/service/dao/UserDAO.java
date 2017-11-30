@@ -1,9 +1,9 @@
 package com.github.dugasz1.szoftverteszteles.service.dao;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.AlreadyExistingException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageNotAvaibleException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.AlreadyExistingException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvaibleException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 
 public interface UserDAO {

@@ -1,6 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.web.it;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.service.UserService;
 import com.github.dugasz1.szoftverteszteles.dao.mysql.ConnectionManager;
@@ -9,7 +9,6 @@ import com.github.dugasz1.szoftverteszteles.service.UserServiceImpl;
 import org.junit.*;
 
 import java.sql.Connection;
-import java.sql.Statement;
 
 public class UserServiceImplIT {
     private static Connection conn;

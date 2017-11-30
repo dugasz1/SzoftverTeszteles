@@ -4,6 +4,9 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
 import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 import com.github.dugasz1.szoftverteszteles.core.service.RecipeService;
 import com.github.dugasz1.szoftverteszteles.service.dao.RecipeDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvailableException;
 
 public class RecipeServiceImpl implements RecipeService{
 
@@ -13,7 +16,7 @@ public class RecipeServiceImpl implements RecipeService{
         this.recipeDAO = recipeDAO;
     }
 
-    public Recipe getRecipe(int id) throws NoCategoryException, StorageException, NoIngredientException, StorageNotAvaibleException, NotFoundException, NoNameException {
+    public Recipe getRecipe(int id) throws NoCategoryException, StorageException, NoIngredientException, StorageNotAvailableException, NotFoundException, NoNameException {
         return recipeDAO.getRecipe(id);
     }
 
