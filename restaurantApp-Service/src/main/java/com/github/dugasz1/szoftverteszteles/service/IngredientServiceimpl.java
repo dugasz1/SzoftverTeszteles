@@ -28,8 +28,14 @@ public class IngredientServiceImpl implements IngredientService {
         }
     }
 
-    public boolean updateIngredientItem(int id) {
-        return ingredientDAO.updateIngredientItem(id);
+    public boolean updateIngredientItem(int id) throws ExistingProblemException, StorageProblemException {
+        try {
+            return ingredientDAO.updateIngredientItem(id);
+        } catch (NotFoundException | AlreadyExistingException e) {
+            throw new ExistingProblemException();
+        } catch (StorageNotAvailableException | StorageException e) {
+            throw new StorageProblemException();
+        }
     }
 
     public boolean updateIngredientItem(IngredientItem recipe) throws ExistingProblemException, StorageProblemException {

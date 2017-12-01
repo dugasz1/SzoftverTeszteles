@@ -4,6 +4,7 @@ import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public interface UserDAO {
+
     /**
      * Create a user and save it in the database.
      *

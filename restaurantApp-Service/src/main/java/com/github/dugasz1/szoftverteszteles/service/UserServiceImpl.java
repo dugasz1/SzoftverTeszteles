@@ -9,6 +9,7 @@ import com.github.dugasz1.szoftverteszteles.service.dao.UserDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public class UserServiceImpl implements UserService {
+
     private UserDAO userDAO;
 
     public UserServiceImpl(UserDAO userDAO) {

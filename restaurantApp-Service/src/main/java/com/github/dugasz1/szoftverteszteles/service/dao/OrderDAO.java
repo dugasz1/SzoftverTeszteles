@@ -9,6 +9,7 @@ import java.util.Collection;
 import java.util.Dictionary;
 
 public interface OrderDAO {
+
     Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException, AlreadyExistingException;
 
     Order getOrder(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;

@@ -13,6 +13,7 @@ import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 import java.sql.*;
 
 public class IngredientDAOmysql implements IngredientDAO {
+
     private Connection conn;
 
     public IngredientDAOmysql(Connection conn) {
@@ -22,8 +23,8 @@ public class IngredientDAOmysql implements IngredientDAO {
 
     public IngredientItem getIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, WrongFormatException {
         String selectSQL = "SELECT * FROM ingredient WHERE id = ?";
-        PreparedStatement ps = null;
-        IngredientItem ingredient = null;
+        PreparedStatement ps;
+        IngredientItem ingredient;
         try {
             ps = conn.prepareStatement(selectSQL);
             ps.setInt(1, id);

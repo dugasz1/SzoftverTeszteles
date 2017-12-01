@@ -4,6 +4,7 @@ import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public interface RecipeDAO {
+
     Recipe getRecipe(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
 
     boolean updateRecipe(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;

@@ -6,6 +6,7 @@ import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgum
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 
 public interface RecipeService {
+
     Recipe getRecipe(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
     boolean updateRecipe(int id) throws StorageProblemException, ExistingProblemException;

@@ -12,6 +12,7 @@ import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
  *TODO: Implement it!
  */
 public class MenuServiceImpl implements MenuService {
+
     private MenuDAO menuDao;
 
     public MenuServiceImpl(MenuDAO menuDAO) {

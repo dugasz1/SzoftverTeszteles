@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Map;
 
 public interface WarehouseService {
+
     WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
     /**

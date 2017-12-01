@@ -11,6 +11,7 @@ import java.util.Collection;
 import java.util.Dictionary;
 
 public interface OrderService {
+
     Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
     Order getOrder(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;

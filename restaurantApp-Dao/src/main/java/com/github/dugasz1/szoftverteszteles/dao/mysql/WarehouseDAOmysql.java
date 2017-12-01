@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.Map;
 
 public class WarehouseDAOmysql implements WarehouseDAO {
+
     private IngredientDAO ingredientDAO;
 
     public WarehouseDAOmysql(IngredientDAO ingredientDAO) {
