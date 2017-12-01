@@ -1,13 +1,16 @@
 package com.github.dugasz1.szoftverteszteles.dao.mysql;
 
-import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.core.model.Order;
+import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.service.dao.OrderDAO;
 
 import java.util.Collection;
 import java.util.Dictionary;
 
+/*
+ *TODO: Implement it!
+ */
 public class OrderDAOmysql implements OrderDAO {
     public Order createOrder(Dictionary<MenuItem, Integer> menuItems) {
         return null;

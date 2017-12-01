@@ -3,6 +3,7 @@ package com.github.dugasz1.szoftverteszteles.service;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.core.service.IngredientService;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
@@ -15,7 +16,7 @@ public class IngredientServiceImpl implements IngredientService {
         this.ingredientDAO = ingredientDAO;
     }
 
-    public IngredientItem getIngredientItem(int id) throws ExistingProblemException, StorageProblemException {
+    public IngredientItem getIngredientItem(int id) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
         try {
             return ingredientDAO.getIngredientItem(id);
         } catch (NotFoundException e) {
@@ -23,9 +24,8 @@ public class IngredientServiceImpl implements IngredientService {
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
         } catch (WrongFormatException e) {
-            e.printStackTrace();
+            throw new MissingArgumentException();
         }
-        return null;
     }
 
     public boolean updateIngredientItem(int id) {
