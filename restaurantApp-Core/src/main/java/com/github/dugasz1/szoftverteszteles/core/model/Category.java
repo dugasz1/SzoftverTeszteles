@@ -1,6 +1,5 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.IllegalIdException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 
 public class Category {
@@ -13,7 +12,7 @@ public class Category {
      * @param id
      * @param name
      */
-    public Category(int id, String name) throws NoNameException, IllegalIdException {
+    public Category(int id, String name) throws NoNameException {
         setId(id);
         setName(name);
     }
@@ -32,9 +31,7 @@ public class Category {
         return id;
     }
 
-    public void setId(int id) throws IllegalIdException {
-        if (id < 0)
-            throw new IllegalIdException("Illegal ID number.");
+    public void setId(int id) {
         this.id = id;
     }
 
