@@ -1,9 +1,10 @@
 package com.github.dugasz1.szoftverteszteles.service.dao;
 
+import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
-import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 import java.util.Collection;
 import java.util.Date;
@@ -11,38 +12,45 @@ import java.util.Map;
 
 public interface WarehouseDAO {
 
-    public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
+    WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) throws StorageException, StorageNotAvailableException, WrongFormatException, AlreadyExistingException;
 
-    public Map<WarehouseItem, Float> calculateOrderConsume(Order order);
-    public WarehouseItem getWarehouseItem(int id);
-    public Collection<WarehouseItem> getByUser( User user);
-    public Collection<WarehouseItem> getCloseToWarrant(Date date);
+    Map<WarehouseItem, Float> calculateOrderConsume(Order order);
+
+    WarehouseItem getWarehouseItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+
+    Collection<WarehouseItem> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+
+    Collection<WarehouseItem> getCloseToWarrant(Date date) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
 
     /**
      * - Gets warehouseitems between registered date.
      * - Or if from null then all item until date.
      * - Or if until null then all item from date.
-     * @param from from Date
+     *
+     * @param from  from Date
      * @param until until Date
      * @return Collection of warehouse item
      */
-    public Collection<WarehouseItem> getByRegisteredDate(Date from, Date until);
+    Collection<WarehouseItem> getByRegisteredDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
 
     /**
      * - Gets warehouseitems between warrant date.
      * - Or if from null then all item until date.
      * - Or if until null then all item from date.
-     * @param from from Date
+     *
+     * @param from  from Date
      * @param until until Date
      * @return Collection of warehouse item
      */
-    public Collection<WarehouseItem> getByWarrantDate(Date from, Date until);
+    Collection<WarehouseItem> getByWarrantDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
 
-    public boolean updateWarehouseItem(int id);
-    public boolean updateWarehouseItem(WarehouseItem warehouseItem);
+    boolean updateWarehouseItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 
-    public boolean deleteWarehouseItem(int id);
-    public boolean deleteWarehouseItem(WarehouseItem warehouseItem);
+    boolean updateWarehouseItem(WarehouseItem warehouseItem) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
+
+    boolean deleteWarehouseItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException;
+
+    boolean deleteWarehouseItem(WarehouseItem warehouseItem) throws NotFoundException, StorageNotAvailableException, StorageException;
 
 
 }

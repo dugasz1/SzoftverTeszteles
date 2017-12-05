@@ -3,9 +3,11 @@ package com.github.dugasz1.szoftverteszteles.dao.mysql;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
 
-public class MenuDAOmysql implements MenuDAO{
+/*
+ *TODO: Implement it!
+ */
+public class MenuDAOmysql implements MenuDAO {
 
-    @Override
     public void createMenuItem(MenuItem menuItem) {
 
     }

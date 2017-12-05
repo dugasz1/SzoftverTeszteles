@@ -4,33 +4,41 @@ import com.github.dugasz1.szoftverteszteles.core.model.Ingredient;
 import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.model.WarehouseItem;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
 
 public interface WarehouseService {
-    public WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant);
+
+    WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
     /**
      * Collects how much ingredient will be consumed by the order.
+     *
      * @param order The order.
      * @return
      */
-    public Map<WarehouseItem, Float> calculateOrderConsume(Order order);
+    Map<WarehouseItem, Float> calculateOrderConsume(Order order);
 
-    public Collection<WarehouseItem> getCloseToWarrant(Date date);
+    Collection<WarehouseItem> getCloseToWarrant(Date date) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public WarehouseItem getWarehouseItem(int id);
-    public Collection<WarehouseItem> getByUser( User user);
+    WarehouseItem getWarehouseItem(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public Collection<WarehouseItem> getByRegisteredDate(Date from, Date until);
-    public Collection<WarehouseItem> getByWarrantDate(Date from, Date until);
+    Collection<WarehouseItem> getByUser(User user) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public boolean updateWarehouseItem(int id);
-    public boolean updateWarehouseItem(WarehouseItem warehouseItem);
+    Collection<WarehouseItem> getByRegisteredDate(Date from, Date until) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public boolean deleteWarehouseItem(int id);
-    public boolean deleteWarehouseItem(WarehouseItem warehouseItem);
-    
+    Collection<WarehouseItem> getByWarrantDate(Date from, Date until) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
+
+    boolean updateWarehouseItem(int id) throws StorageProblemException, ExistingProblemException;
+
+    boolean updateWarehouseItem(WarehouseItem warehouseItem) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteWarehouseItem(int id) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteWarehouseItem(WarehouseItem warehouseItem) throws StorageProblemException, ExistingProblemException;
 }

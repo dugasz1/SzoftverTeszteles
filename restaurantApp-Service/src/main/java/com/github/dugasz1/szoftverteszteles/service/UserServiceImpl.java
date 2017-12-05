@@ -1,41 +1,84 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.AlreadyExistingException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.NotFoundException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageException;
-import com.github.dugasz1.szoftverteszteles.core.exceptions.StorageNotAvaibleException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.service.UserService;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.UserDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public class UserServiceImpl implements UserService {
-    private UserDAO userDAO = null;
+
+    private UserDAO userDAO;
 
     public UserServiceImpl(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
-    public User createUser(String name) throws StorageNotAvaibleException, AlreadyExistingException, StorageException {
-        return userDAO.createUser(name);
+    public User createUser(String name) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+        try {
+            return userDAO.createUser(name);
+        } catch (AlreadyExistingException e) {
+            throw new ExistingProblemException();
+        } catch (StorageException | StorageNotAvailableException e) {
+            throw new StorageProblemException();
+        } catch (WrongFormatException e) {
+            throw new MissingArgumentException();
+        }
     }
 
-    public User getUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
-        return userDAO.getUser(id);
+    public User getUser(int id) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+        try {
+            return userDAO.getUser(id);
+        } catch (NotFoundException e) {
+            throw new ExistingProblemException();
+        } catch (StorageException | StorageNotAvailableException e) {
+            throw new StorageProblemException();
+        } catch (WrongFormatException e) {
+            throw new MissingArgumentException();
+        }
     }
 
-    public User getUser(String name) throws StorageNotAvaibleException, NotFoundException, StorageException {
-        return userDAO.getUser(name);
+    public User getUser(String name) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+        try {
+            return userDAO.getUser(name);
+        } catch (NotFoundException e) {
+            throw new ExistingProblemException();
+        } catch (StorageException | StorageNotAvailableException e) {
+            throw new StorageProblemException();
+        } catch (WrongFormatException e) {
+            throw new MissingArgumentException();
+        }
     }
 
-    public boolean updateUser(User user) throws StorageNotAvaibleException, AlreadyExistingException, StorageException, NotFoundException {
-        return userDAO.updateUser(user);
+    public boolean updateUser(User user) throws ExistingProblemException, StorageProblemException {
+        try {
+            return userDAO.updateUser(user);
+        } catch (NotFoundException | AlreadyExistingException e) {
+            throw new ExistingProblemException();
+        } catch (StorageNotAvailableException | StorageException e) {
+            throw new StorageProblemException();
+        }
     }
 
-    public boolean deleteUser(int id) throws StorageNotAvaibleException, StorageException, NotFoundException {
-        return userDAO.deleteUser(id);
+    public boolean deleteUser(int id) throws ExistingProblemException, StorageProblemException {
+        try {
+            return userDAO.deleteUser(id);
+        } catch (NotFoundException e) {
+            throw new ExistingProblemException();
+        } catch (StorageNotAvailableException | StorageException e) {
+            throw new StorageProblemException();
+        }
     }
 
-    public boolean deleteUser(User user) throws StorageNotAvaibleException, NotFoundException, StorageException {
-        return userDAO.deleteUser(user);
+    public boolean deleteUser(User user) throws ExistingProblemException, StorageProblemException {
+        try {
+            return userDAO.deleteUser(user);
+        } catch (NotFoundException e) {
+            throw new ExistingProblemException();
+        } catch (StorageNotAvailableException | StorageException e) {
+            throw new StorageProblemException();
+        }
     }
 }

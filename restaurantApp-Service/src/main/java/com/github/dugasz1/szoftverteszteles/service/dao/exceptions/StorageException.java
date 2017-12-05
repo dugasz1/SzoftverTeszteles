@@ -1,4 +1,4 @@
-package com.github.dugasz1.szoftverteszteles.core.exceptions;
+package com.github.dugasz1.szoftverteszteles.service.dao.exceptions;
 
 public class StorageException extends Exception{
     public StorageException() {

@@ -1,14 +1,19 @@
 package com.github.dugasz1.szoftverteszteles.core.service;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
 import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 
 public interface RecipeService {
-    public Recipe getRecipe(int id) throws NoCategoryException, StorageException, NoIngredientException, StorageNotAvaibleException, NotFoundException, NoNameException;
 
-    public boolean updateRecipe(int id);
-    public boolean updateRecipe(Recipe recipe);
+    Recipe getRecipe(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public boolean deleteRecipe(int id);
-    public boolean deleteRecipe(Recipe recipe);
+    boolean updateRecipe(int id) throws StorageProblemException, ExistingProblemException;
+
+    boolean updateRecipe(Recipe recipe) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteRecipe(int id) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteRecipe(Recipe recipe) throws StorageProblemException, ExistingProblemException;
 }

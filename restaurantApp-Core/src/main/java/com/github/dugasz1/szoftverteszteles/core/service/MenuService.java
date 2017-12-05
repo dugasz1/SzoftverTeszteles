@@ -1,16 +1,21 @@
 package com.github.dugasz1.szoftverteszteles.core.service;
 
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 
 public interface MenuService {
 
-    public void createMenuItem(MenuItem menuItem);
+    void createMenuItem(MenuItem menuItem) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public MenuItem getMenuItem(int id);
+    MenuItem getMenuItem(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
 
-    public boolean updateMenuItem(int id);
-    public boolean updateMenuItem(MenuItem recipe);
+    boolean updateMenuItem(int id) throws StorageProblemException, ExistingProblemException;
 
-    public boolean deleteMenuItem(int id);
-    public boolean deleteMenuItem(MenuItem recipe);
+    boolean updateMenuItem(MenuItem recipe) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteMenuItem(int id) throws StorageProblemException, ExistingProblemException;
+
+    boolean deleteMenuItem(MenuItem recipe) throws StorageProblemException, ExistingProblemException;
 }
