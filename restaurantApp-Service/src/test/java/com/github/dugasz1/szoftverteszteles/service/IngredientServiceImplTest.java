@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.model.*;
 import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
@@ -46,7 +47,7 @@ public class IngredientServiceImplTest {
         assertTrue(ingredientServiceImpl.updateIngredientItem(ingredientItem) == true);
     }
 
-    @Test(expected = NotFoundException.class)
+    @Test(expected = ExistingProblemException.class)
     public void testDeleteIngredientItem() throws Exception {
         ingredientServiceImpl.deleteIngredientItem(2);
 
