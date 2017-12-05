@@ -3,9 +3,9 @@ package com.github.dugasz1.szoftverteszteles.service.dao;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
-public interface IngredientDAO {
+public interface IngredientItemDAO {
 
-    IngredientItem getIngredientItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    IngredientItem getIngredientItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     boolean updateIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 

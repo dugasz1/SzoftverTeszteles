@@ -6,22 +6,22 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientExceptio
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
 import com.github.dugasz1.szoftverteszteles.core.model.Nutritions;
-import com.github.dugasz1.szoftverteszteles.service.dao.IngredientDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.IngredientItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.sql.*;
 
-public class IngredientDAOmysql implements IngredientDAO {
+public class IngredientItemDAOmysql implements IngredientItemDAO {
 
     private Connection conn;
 
-    public IngredientDAOmysql(Connection conn) {
+    public IngredientItemDAOmysql(Connection conn) {
         this.conn = conn;
     }
 
 
-    public IngredientItem getIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, WrongFormatException {
+    public IngredientItem getIngredientItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException {
         String selectSQL = "SELECT * FROM ingredient WHERE id = ?";
         PreparedStatement ps;
         IngredientItem ingredient;
@@ -39,11 +39,11 @@ public class IngredientDAOmysql implements IngredientDAO {
                 throw new NotFoundException();
             }
         } catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         } catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         } catch (EmptyNameException | NoNameException | NoIngredientException e) {
-            throw new WrongFormatException();
+            throw new StorageException(e);
         }
         return ingredient;
     }

@@ -1,6 +1,5 @@
 package com.github.dugasz1.szoftverteszteles.core.model;
 
-import com.github.dugasz1.szoftverteszteles.core.exceptions.IllegalIdException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,8 +71,4 @@ public class CategoryTest {
         Category category = new Category(1, null);
     }
 
-    @Test(expected = IllegalIdException.class)
-    public void constructorIllegalId() throws Exception{
-        Category category = new Category(-1, "testname");
-    }
 }
