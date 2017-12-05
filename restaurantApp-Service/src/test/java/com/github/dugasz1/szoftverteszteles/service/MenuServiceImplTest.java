@@ -2,8 +2,7 @@ package com.github.dugasz1.szoftverteszteles.service;
 
 import com.github.dugasz1.szoftverteszteles.core.model.*;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
-import com.github.dugasz1.szoftverteszteles.core.service.MenuService;
-import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import org.easymock.EasyMock;
 import org.junit.Assume;
 import org.junit.Before;
@@ -22,7 +21,7 @@ public class MenuServiceImplTest {
 
     @Before
     public void setUp() throws Exception {
-        MenuDAO menuDAO = EasyMock.createNiceMock(MenuDAO.class);
+        MenuItemDAO menuDAO = EasyMock.createNiceMock(MenuItemDAO.class);
         Nutritions nutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
         IngredientItem ingredientItem = new IngredientItem(1,"testIngredientItem",nutritions,"testUnit");
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);

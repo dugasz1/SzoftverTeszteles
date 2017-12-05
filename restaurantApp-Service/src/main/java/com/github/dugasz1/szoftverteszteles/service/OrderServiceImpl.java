@@ -29,8 +29,6 @@ public class OrderServiceImpl implements OrderService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -41,8 +39,6 @@ public class OrderServiceImpl implements OrderService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -53,8 +49,6 @@ public class OrderServiceImpl implements OrderService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 

@@ -12,10 +12,9 @@ public interface UserDAO {
      * @return The user. null if username already exist.
      * @throws StorageNotAvailableException If can't reach data.
      * @throws StorageException             If the storage having problems
-     * @throws WrongFormatException         If the format or the value of the <param>name</param> is wrong
      * @throws AlreadyExistingException     If the user already exist
      */
-    User createUser(String name) throws StorageException, StorageNotAvailableException, WrongFormatException, AlreadyExistingException;
+    User createUser(String name) throws StorageException, StorageNotAvailableException, AlreadyExistingException;
 
     /**
      * Get the user from the database
@@ -24,9 +23,9 @@ public interface UserDAO {
      * @return The user. If user is not exist then null.
      * @throws StorageNotAvailableException If can't reach date.
      */
-    User getUser(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    User getUser(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    User getUser(String name) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    User getUser(String name) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     boolean updateUser(User user) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 
