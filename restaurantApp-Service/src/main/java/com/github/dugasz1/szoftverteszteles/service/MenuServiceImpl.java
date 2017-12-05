@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.core.service.MenuService;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
@@ -7,6 +8,8 @@ import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgum
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
+
+import java.awt.*;
 
 /*
  *TODO: Implement it!
@@ -36,17 +39,15 @@ public class MenuServiceImpl implements MenuService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
+        } catch (NoCategoryException e) {
+            e.printStackTrace();
         }
+        return null;
     }
 
-    public boolean updateMenuItem(int id) throws ExistingProblemException, StorageProblemException {
-        try {
-            return menuDao.updateMenuItem(id);
-        } catch (NotFoundException | AlreadyExistingException e) {
-            throw new ExistingProblemException();
-        } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
-        }
+    @Override
+    public boolean updateMenuItem(int id) throws StorageProblemException, ExistingProblemException {
+        return false;
     }
 
     public boolean updateMenuItem(MenuItem menuItem) throws ExistingProblemException, StorageProblemException {

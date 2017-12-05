@@ -7,7 +7,7 @@ import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvailableException;
-import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.WrongFormatException;
+//import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.WrongFormatException;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.awt.*;
