@@ -4,17 +4,11 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.*;
 import com.github.dugasz1.szoftverteszteles.core.model.*;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
-import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
-import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
-import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvailableException;
-import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.WrongFormatException;
+import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 import com.mysql.cj.jdbc.exceptions.CommunicationsException;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -77,15 +71,81 @@ public class MenuItemDAOmysql implements MenuItemDAO {
         return menuItem;
     }
 
-    public boolean updateMenuItem(MenuItem menuItem) {
-        return false;
+    public boolean updateMenuItem(MenuItem menuItem) throws NotFoundException, StorageNotAvailableException, AlreadyExistingException, StorageException {
+
+        String updateSQL = "UPDATE menu SET price = ? recipe_id = ? WHERE id = ?";
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(updateSQL);
+            ps.setFloat(1, menuItem.getPrice());
+            ps.setInt(2, menuItem.getRecipe().getId());
+            ps.setInt(3, menuItem.getId());
+
+            if (ps.executeUpdate() == 0) {
+                throw new NotFoundException();
+            }
+        }
+        catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        }
+        catch (SQLIntegrityConstraintViolationException e) {
+            throw new AlreadyExistingException();
+        }
+        catch (SQLException e) {
+            throw new StorageException();
+        }
+        return true;
     }
 
-    public boolean deleteMenuItem(int id) {
-        return false;
+    public boolean deleteMenuItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException {
+        String deleteSQL = "DELETE FROM menu WHERE id = ?";
+        //tranzitivity
+        String deleteSQL_order_menu = "DELETE FROM order_menu WHERE menu_id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(deleteSQL_order_menu);
+            ps.setInt(1, id);
+            if (ps.executeUpdate() == 0) {
+                throw new NotFoundException();
+            }
+
+            PreparedStatement ps1 = conn.prepareStatement(deleteSQL);
+            ps1.setInt(1, id);
+            if (ps1.executeUpdate() == 0) {
+                throw new NotFoundException();
+            }
+        }
+        catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        }
+        catch (SQLException e) {
+            throw new StorageException();
+        }
+        return true;
     }
 
-    public boolean deleteMenuItem(MenuItem menuItem) {
-        return false;
+    public boolean deleteMenuItem(MenuItem menuItem) throws NotFoundException, StorageNotAvailableException, StorageException {
+        String deleteSQL = "DELETE FROM menu WHERE id = ?";
+        //tranzitivity
+        String deleteSQL_order_menu = "DELETE FROM order_menu WHERE menu_id = ?";
+        try {
+            PreparedStatement ps = conn.prepareStatement(deleteSQL_order_menu);
+            ps.setInt(1, menuItem.getId());
+            if (ps.executeUpdate() == 0) {
+                throw new NotFoundException();
+            }
+
+            PreparedStatement ps1 = conn.prepareStatement(deleteSQL);
+            ps1.setInt(1, menuItem.getId());
+            if (ps1.executeUpdate() == 0) {
+                throw new NotFoundException();
+            }
+        }
+        catch (CommunicationsException e) {
+            throw new StorageNotAvailableException();
+        }
+        catch (SQLException e) {
+            throw new StorageException();
+        }
+        return true;
     }
 }
