@@ -4,10 +4,9 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.EmptyNameException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoNameException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoRecipeException;
-import com.github.dugasz1.szoftverteszteles.core.model.IngredientItem;
+import com.github.dugasz1.szoftverteszteles.core.model.*;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
-import com.github.dugasz1.szoftverteszteles.core.model.Nutritions;
-import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.StorageNotAvailableException;
@@ -20,10 +19,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/*
- *TODO: Implement it!
- */
-public class MenuItemDAOmysql implements MenuDAO {
+
+public class MenuItemDAOmysql implements MenuItemDAO {
     private Connection conn;
 
     public MenuItemDAOmysql(Connection conn) {
@@ -34,20 +31,23 @@ public class MenuItemDAOmysql implements MenuDAO {
 
     }
 
-    public MenuItem getMenuItem(int id) throws  NotFoundException, StorageNotAvailableException, StorageException {
+    public MenuItem getMenuItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException {
         String selectSQL = "select * from menu inner join recipe on menu.recipe_id = recipe.id \n" +
                 "inner join category on recipe.category_id = category.id \n" +
                 "inner join recipe_ingredient on recipe.id = recipe_ingredient.recipe_id \n" +
                 "inner join ingredient on recipe_ingredient.ingredient_id = ingredient.id WHERE menu.id = ?";
         PreparedStatement ps;
+
         MenuItem menuItem;
+
         try {
             ps = conn.prepareStatement(selectSQL);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             boolean isExist = rs.next();
             if (isExist) {
-                //menuItem = new MenuItem(rs.getInt("menu.id"), rs.getFloat(""));
+                /*menuItem = new MenuItem(rs.getInt("menu.id"), rs.getFloat("menu.price"), new Recipe(rs.getInt("recipe.id"),
+                        new Category(rs.getInt("category.id"), rs.getString("name")), ));*/
             } else {
                 throw new NotFoundException();
             }
