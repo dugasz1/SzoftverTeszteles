@@ -5,7 +5,7 @@ import com.github.dugasz1.szoftverteszteles.core.service.MenuService;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
-import com.github.dugasz1.szoftverteszteles.service.dao.MenuDAO;
+import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 /*
@@ -13,9 +13,9 @@ import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
  */
 public class MenuServiceImpl implements MenuService {
 
-    private MenuDAO menuDao;
+    private MenuItemDAO menuDao;
 
-    public MenuServiceImpl(MenuDAO menuDAO) {
+    public MenuServiceImpl(MenuItemDAO menuDAO) {
         this.menuDao = menuDAO;
     }
 
@@ -26,8 +26,6 @@ public class MenuServiceImpl implements MenuService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -38,8 +36,6 @@ public class MenuServiceImpl implements MenuService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
