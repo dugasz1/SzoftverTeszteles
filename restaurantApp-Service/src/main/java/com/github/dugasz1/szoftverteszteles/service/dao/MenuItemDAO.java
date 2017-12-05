@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.service.dao;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
@@ -7,9 +8,7 @@ public interface MenuItemDAO {
 
     void createMenuItem(MenuItem menuItem) throws StorageException, StorageNotAvailableException, AlreadyExistingException;
 
-    MenuItem getMenuItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
-
-    boolean updateMenuItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
+    MenuItem getMenuItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException, NoCategoryException;
 
     boolean updateMenuItem(MenuItem menuItem) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 
