@@ -26,7 +26,7 @@ public class RecipeServiceImplTest {
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, category, collection);
+        Recipe recipe = new Recipe(1,"name",  category, collection);
         EasyMock.expect(recipeDAO.getRecipe(1)).andReturn(recipe);
         EasyMock.expect(recipeDAO.updateRecipe(1)).andReturn(true);
         EasyMock.expect(recipeDAO.updateRecipe(recipe)).andReturn(true);
@@ -43,7 +43,7 @@ public class RecipeServiceImplTest {
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, category, collection);
+        Recipe recipe = new Recipe(1,"name",  category, collection);
         assertEquals(recipeService.getRecipe(1),recipe);
     }
     @Test
@@ -59,7 +59,7 @@ public class RecipeServiceImplTest {
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, category, collection);
+        Recipe recipe = new Recipe(1,"name",  category, collection);
         assertEquals(recipeService.updateRecipe(recipe), true);
 
     }
@@ -75,7 +75,7 @@ public class RecipeServiceImplTest {
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, category, collection);
+        Recipe recipe = new Recipe(1,"name",  category, collection);
         assertEquals(recipeService.deleteRecipe(recipe), true);
     }
 }

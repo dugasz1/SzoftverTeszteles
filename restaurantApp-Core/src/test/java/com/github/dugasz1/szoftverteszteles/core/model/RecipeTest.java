@@ -23,22 +23,22 @@ public class RecipeTest {
         ingredients.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                         new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "testunit2"), 1.6f));
 
-        testRecipe = new Recipe(1, new Category(1,"testcategory"), ingredients);
+        testRecipe = new Recipe(1,"name",  new Category(1,"testcategory"), ingredients);
     }
 
     @Test(expected = NoCategoryException.class)
     public void constructorNoCategoryException () throws Exception{
-        Recipe recipe = new Recipe(1, null, ingredients);
+        Recipe recipe = new Recipe(1,"name",  null, ingredients);
     }
 
     @Test(expected = NoIngredientException.class)
     public void constructorNoIngredientException () throws Exception{
-        Recipe recipe = new Recipe(1, new Category(1, "a"), null);
+        Recipe recipe = new Recipe(1,"name",  new Category(1, "a"), null);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void constructorEmptryIngredients () throws Exception{
-        Recipe recipe = new Recipe(1, new Category(1, "a"), new ArrayDeque<Ingredient>());
+        Recipe recipe = new Recipe(1,"name",  new Category(1, "a"), new ArrayDeque<Ingredient>());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class RecipeTest {
 
     @Test
     public void setCategory() throws Exception{
-        Recipe localRecipe = new Recipe(2, new Category(2, "testsetcategory"), ingredients);
+        Recipe localRecipe = new Recipe(2,"name",  new Category(2, "testsetcategory"), ingredients);
         Category localCategory = new Category(1, "localCategory");
         localRecipe.setCategory(localCategory);
         assertEquals(localRecipe.getCategory(), localCategory);
@@ -66,7 +66,7 @@ public class RecipeTest {
                 new Nutritions(0.1f,0.2f,0.3f,0.4f,0.5f), "localtestunit1"), 1.5f));
         localIngredients.add(new Ingredient(new IngredientItem(2, "localtestingredientitem2",
                 new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "localtestunit2"), 1.6f));
-        Recipe localRecipe = new Recipe(3, new Category(3,"localCategory"), localIngredients);
+        Recipe localRecipe = new Recipe(3,"name",  new Category(3,"localCategory"), localIngredients);
         assertEquals(localRecipe.getIngredients(), localIngredients);
     }
 
@@ -83,7 +83,7 @@ public class RecipeTest {
 
     @Test
     public void notEquals() throws Exception {
-        Recipe notSameRecipe = new Recipe(22, new Category(22, "Notsame"), ingredients);
+        Recipe notSameRecipe = new Recipe(22,"name",  new Category(22, "Notsame"), ingredients);
         assertFalse(notSameRecipe.equals(testRecipe));
     }
 
@@ -111,8 +111,8 @@ public class RecipeTest {
         localIngredients.add(new Ingredient(new IngredientItem(2, "localtestingredientitem2",
                 new Nutritions(1.1f,1.2f,1.3f,1.4f,1.5f), "localtestunit2"), 1.6f));
 
-        Recipe localRecipe1 = new Recipe(4, new Category(4, "localCategory"), localIngredients);
-        Recipe localRecipe2 = new Recipe(4, new Category(4, "localCategory"), localIngredients);
+        Recipe localRecipe1 = new Recipe(4,"name",  new Category(4, "localCategory"), localIngredients);
+        Recipe localRecipe2 = new Recipe(4,"name",  new Category(4, "localCategory"), localIngredients);
 
         assertTrue(localRecipe2.equals(localRecipe1));
     }

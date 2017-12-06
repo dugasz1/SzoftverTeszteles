@@ -3,15 +3,18 @@ package com.github.dugasz1.szoftverteszteles.core.model;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
 import com.github.dugasz1.szoftverteszteles.core.exceptions.NoIngredientException;
 
+import javax.print.DocFlavor;
 import java.util.Collection;
 
 public class Recipe {
     private int id;
+    private String name;
     private Category category;
     private Collection<Ingredient> ingredients;
 
-    public Recipe (int id, Category category, Collection<Ingredient> ingredients)throws NoIngredientException, NoCategoryException{
+    public Recipe (int id,String name, Category category, Collection<Ingredient> ingredients)throws NoIngredientException, NoCategoryException{
         this.id = id;
+        this.name = name;
         setCategory(category);
         setIngredients(ingredients);
     }
@@ -19,6 +22,8 @@ public class Recipe {
     public int getId() {
         return id;
     }
+
+    public String getName() {return name;}
 
     public Category getCategory() {
         return category;

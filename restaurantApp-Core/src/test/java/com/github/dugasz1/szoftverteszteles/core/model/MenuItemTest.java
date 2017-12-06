@@ -23,7 +23,7 @@ public class MenuItemTest {
         testIngredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        testMenuItem = new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
+        testMenuItem = new MenuItem(1, 1550f, new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList));
     }
 
     @Test
@@ -38,14 +38,14 @@ public class MenuItemTest {
 
     @Test
     public void getRecipe() throws Exception {
-        Recipe localTestRecipe = new Recipe(1, new Category(1, "testCategory"), testIngredientList);
+        Recipe localTestRecipe = new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList);
 
         assertEquals(testMenuItem.getRecipe(), localTestRecipe);
     }
 
     @Test
     public void setPrice() throws Exception {
-        MenuItem localTestMenuItem = new MenuItem(2, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
+        MenuItem localTestMenuItem = new MenuItem(2, 1550f, new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList));
         localTestMenuItem.setPrice(1450f);
 
         assertEquals((long) localTestMenuItem.getPrice(), (long) 1450f);
@@ -53,22 +53,22 @@ public class MenuItemTest {
 
     @Test
     public void setRecipe() throws Exception {
-        MenuItem localTestMenuItem = new MenuItem(2, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
-        localTestMenuItem.setRecipe(new Recipe(2, new Category(3, "testCategory2"), testIngredientList));
+        MenuItem localTestMenuItem = new MenuItem(2, 1550f, new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList));
+        localTestMenuItem.setRecipe(new Recipe(2, "name", new Category(3, "testCategory2"), testIngredientList));
 
-        MenuItem newLocalTestMenuItem = new MenuItem(2, 1550f, new Recipe(2, new Category(3, "testCategory2"), testIngredientList));
+        MenuItem newLocalTestMenuItem = new MenuItem(2, 1550f, new Recipe(2,"name",  new Category(3, "testCategory2"), testIngredientList));
         assertEquals(localTestMenuItem.getRecipe(), newLocalTestMenuItem.getRecipe());
     }
 
     @Test
     public void equals() throws Exception {
-        MenuItem sameMenuItem = new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
+        MenuItem sameMenuItem = new MenuItem(1, 1550f, new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList));
         assertTrue(sameMenuItem.equals(sameMenuItem));
     }
     
     @Test(expected = IllegalArgumentException.class)
     public void constructorIllegalArgument() throws Exception {
-        MenuItem localTestMenuItem = new MenuItem(2, -1.0f, new Recipe(1, new Category(1, "testCategory"), testIngredientList));
+        MenuItem localTestMenuItem = new MenuItem(2, -1.0f, new Recipe(1,"name",  new Category(1, "testCategory"), testIngredientList));
     }
 
     @Test(expected = NoRecipeException.class)
