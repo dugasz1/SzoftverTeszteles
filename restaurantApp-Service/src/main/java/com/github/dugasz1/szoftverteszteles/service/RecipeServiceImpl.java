@@ -1,19 +1,23 @@
 package com.github.dugasz1.szoftverteszteles.service;
 
+import com.github.dugasz1.szoftverteszteles.core.model.Category;
 import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 import com.github.dugasz1.szoftverteszteles.core.service.RecipeService;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
+import com.github.dugasz1.szoftverteszteles.service.dao.CategoryDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.RecipeDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public class RecipeServiceImpl implements RecipeService {
 
     private RecipeDAO recipeDAO;
+    private CategoryDAO categoryDAO;
 
-    public RecipeServiceImpl(RecipeDAO recipeDAO) {
+    public RecipeServiceImpl(RecipeDAO recipeDAO, CategoryDAO categoryDAO) {
         this.recipeDAO = recipeDAO;
+        this.categoryDAO = categoryDAO;
     }
 
     public Recipe getRecipe(int id) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
@@ -65,4 +69,5 @@ public class RecipeServiceImpl implements RecipeService {
             throw new StorageProblemException();
         }
     }
+
 }
