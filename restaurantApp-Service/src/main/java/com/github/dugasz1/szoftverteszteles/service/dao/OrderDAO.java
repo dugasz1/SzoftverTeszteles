@@ -10,11 +10,11 @@ import java.util.Dictionary;
 
 public interface OrderDAO {
 
-    Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException, AlreadyExistingException;
+    Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws NotFoundException, StorageException, StorageNotAvailableException, AlreadyExistingException;
 
-    Order getOrder(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Order getOrder(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    Collection<Order> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Collection<Order> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     boolean updateOrder(Order order) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 

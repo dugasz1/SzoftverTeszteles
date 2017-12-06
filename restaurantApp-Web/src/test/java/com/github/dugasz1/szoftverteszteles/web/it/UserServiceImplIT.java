@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.web.it;
 
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.service.UserService;
@@ -59,7 +60,7 @@ public class UserServiceImplIT {
         Assert.assertTrue(updated.getName().equals(base.getName()));
     }
 
-    @Test(expected = NotFoundException.class)
+    @Test(expected = ExistingProblemException.class)
     public void getNotExistingUser() throws Exception {
         userService.getUser(55);
     }

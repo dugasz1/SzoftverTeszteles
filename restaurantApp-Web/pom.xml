@@ -55,6 +55,8 @@
 
                                 <mysql_file_user_setup>${mysql.file.user.setup}</mysql_file_user_setup>
                                 <mysql_file_user_teardown>${mysql.file.user.teardown}</mysql_file_user_teardown>
+                                <mysql_file_category_setup>${mysql.file.category.setup}</mysql_file_category_setup>
+                                <mysql_file_category_teardown>${mysql.file.category.teardown}</mysql_file_category_teardown>
                             </systemPropertyVariables>
                             <excludes>
                                 <exclude>none</exclude>
@@ -85,5 +87,7 @@
 
         <mysql.file.user.setup>src/test/resources/user_setup.sql</mysql.file.user.setup>
         <mysql.file.user.teardown>src/test/resources/user_teardown.sql</mysql.file.user.teardown>
+        <mysql.file.category.setup>src/test/resources/category_setup.sql</mysql.file.category.setup>
+        <mysql.file.category.teardown>src/test/resources/category_teardown.sql</mysql.file.category.teardown>
     </properties>
 </project>
