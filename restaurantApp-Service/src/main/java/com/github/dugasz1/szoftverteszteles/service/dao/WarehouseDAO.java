@@ -12,15 +12,15 @@ import java.util.Map;
 
 public interface WarehouseDAO {
 
-    WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) throws StorageException, StorageNotAvailableException, WrongFormatException, AlreadyExistingException;
+    WarehouseItem createWarehouseItem(Ingredient ingredient, User user, Date registered, Date warrant) throws StorageException, StorageNotAvailableException, AlreadyExistingException;
 
     Map<WarehouseItem, Float> calculateOrderConsume(Order order);
 
-    WarehouseItem getWarehouseItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    WarehouseItem getWarehouseItem(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    Collection<WarehouseItem> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Collection<WarehouseItem> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    Collection<WarehouseItem> getCloseToWarrant(Date date) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Collection<WarehouseItem> getCloseToWarrant(Date date) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     /**
      * - Gets warehouseitems between registered date.
@@ -31,7 +31,7 @@ public interface WarehouseDAO {
      * @param until until Date
      * @return Collection of warehouse item
      */
-    Collection<WarehouseItem> getByRegisteredDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Collection<WarehouseItem> getByRegisteredDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     /**
      * - Gets warehouseitems between warrant date.
@@ -42,7 +42,7 @@ public interface WarehouseDAO {
      * @param until until Date
      * @return Collection of warehouse item
      */
-    Collection<WarehouseItem> getByWarrantDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    Collection<WarehouseItem> getByWarrantDate(Date from, Date until) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     boolean updateWarehouseItem(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 

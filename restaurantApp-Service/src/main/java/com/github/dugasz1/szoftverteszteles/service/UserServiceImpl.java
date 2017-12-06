@@ -23,8 +23,6 @@ public class UserServiceImpl implements UserService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -35,8 +33,6 @@ public class UserServiceImpl implements UserService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -47,8 +43,6 @@ public class UserServiceImpl implements UserService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 

@@ -30,8 +30,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -46,8 +44,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -58,8 +54,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -70,8 +64,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -82,8 +74,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
@@ -94,8 +84,6 @@ public class WarehouseServiceImpl implements WarehouseService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 

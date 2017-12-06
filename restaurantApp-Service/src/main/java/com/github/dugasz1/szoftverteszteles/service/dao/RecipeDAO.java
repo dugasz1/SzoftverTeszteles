@@ -5,7 +5,9 @@ import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 public interface RecipeDAO {
 
-    Recipe getRecipe(int id) throws NotFoundException, StorageException, StorageNotAvailableException, WrongFormatException;
+    public void createRecipe(Recipe recipe);
+
+    Recipe getRecipe(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
     boolean updateRecipe(int id) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
 

@@ -23,8 +23,6 @@ public class RecipeServiceImpl implements RecipeService {
             throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
-        } catch (WrongFormatException e) {
-            throw new MissingArgumentException();
         }
     }
 
