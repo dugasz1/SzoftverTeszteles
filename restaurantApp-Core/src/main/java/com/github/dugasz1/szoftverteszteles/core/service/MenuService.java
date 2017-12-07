@@ -9,8 +9,6 @@ public interface MenuService {
 
     MenuItem getMenuItem(int id) throws StorageProblemException, MenuItemNotFoundException, MissingArgumentException;
 
-    boolean updateMenuItem(int id) throws StorageProblemException, MenuItemNotFoundException;
-
     boolean updateMenuItem(MenuItem recipe) throws StorageProblemException, MenuItemNotFoundException;
 
     boolean deleteMenuItem(int id) throws StorageProblemException, MenuItemNotFoundException;

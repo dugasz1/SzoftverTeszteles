@@ -46,11 +46,6 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public boolean updateMenuItem(int id) throws StorageProblemException, MenuItemNotFoundException {
-        return false;
-    }
-
-    @Override
     public boolean updateMenuItem(MenuItem menuItem) throws MenuItemNotFoundException, StorageProblemException {
         try {
             return menuDao.updateMenuItem(menuItem);
