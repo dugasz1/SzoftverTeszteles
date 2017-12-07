@@ -57,6 +57,8 @@
                                 <mysql_file_user_teardown>${mysql.file.user.teardown}</mysql_file_user_teardown>
                                 <mysql_file_category_setup>${mysql.file.category.setup}</mysql_file_category_setup>
                                 <mysql_file_category_teardown>${mysql.file.category.teardown}</mysql_file_category_teardown>
+                                <mysql_file_order_setup>${mysql.file.order.setup}</mysql_file_order_setup>
+                                <mysql_file_order_teardown>${mysql.file.order.teardown}</mysql_file_order_teardown>
                             </systemPropertyVariables>
                             <excludes>
                                 <exclude>none</exclude>
@@ -89,5 +91,7 @@
         <mysql.file.user.teardown>src/test/resources/user_teardown.sql</mysql.file.user.teardown>
         <mysql.file.category.setup>src/test/resources/category_setup.sql</mysql.file.category.setup>
         <mysql.file.category.teardown>src/test/resources/category_teardown.sql</mysql.file.category.teardown>
+        <mysql.file.order.setup>src/test/resources/order_setup.sql</mysql.file.order.setup>
+        <mysql.file.order.teardown>src/test/resources/order_teardown.sql</mysql.file.order.teardown>
     </properties>
 </project>

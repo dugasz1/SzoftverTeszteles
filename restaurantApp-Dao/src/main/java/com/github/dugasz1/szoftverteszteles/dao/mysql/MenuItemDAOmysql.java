@@ -63,14 +63,20 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             ResultSet rs = ps.executeQuery();
             boolean isExist = rs.next();
             if (isExist) {
+                Category category = new Category(rs.getInt("category.id"), rs.getString("category.name"));
+                int recipe_id = rs.getInt("recipe.id");
+                String recipe_name = rs.getString("recipe.name");
+                int menu_id =rs.getInt("menu.id");
+                float menu_price = rs.getFloat("menu.price");
                 Collection<Ingredient> ingredients = new ArrayList<>();
+
                 ingredients.add(grabIngredientItem(rs));
                 while (rs.next()){
                     ingredients.add(grabIngredientItem(rs));
                 }
-                Category category = new Category(rs.getInt("category.id"), rs.getString("category.name"));
-                Recipe recipe = new Recipe(rs.getInt("recipe.id"),rs.getString("recipe.name"),category, ingredients);
-                menuItem = new MenuItem(rs.getInt("menu.id"), rs.getFloat("menu.price"), recipe);
+
+                Recipe recipe = new Recipe(recipe_id,recipe_name,category, ingredients);
+                menuItem = new MenuItem(menu_id, menu_price, recipe);
             } else {
                 throw new NotFoundException();
             }

@@ -18,6 +18,7 @@ public class Order {
         this.id = id;
         setDate(date);
         setMenuItems(menuItems);
+        setCompleted(false);
     }
 
     /**
