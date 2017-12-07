@@ -44,9 +44,9 @@ public class CategoryServiceImplIT {
         Assert.assertEquals(categoryService.getCategory(1),new Category(1,"Leves"));
     }
 
-    @Test(expected = StorageProblemException.class)
+    @Test
     public void deleteCategoryTest() throws Exception{
-        categoryService.deletaCategory(10);
+        categoryService.deletaCategory(1);
     }
 
     @Test

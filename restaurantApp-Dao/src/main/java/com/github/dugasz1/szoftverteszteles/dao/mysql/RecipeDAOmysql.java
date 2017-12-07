@@ -117,12 +117,11 @@ public class RecipeDAOmysql implements RecipeDAO {
 
     public boolean deleteRecipe(int id) throws StorageNotAvailableException {
        try {
-           PreparedStatement statement = conn.prepareStatement("DELETE * FROM Recipe WHERE id = ?");
+           PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
            statement.setInt(1,id);
-           if(statement.execute())
-               return true;
+           return statement.execute();
         } catch (SQLException e) {
-            throw new StorageNotAvailableException();
+            e.printStackTrace();
         }
         return false;
 

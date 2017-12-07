@@ -38,7 +38,7 @@ public class CategoryDAOmysql implements CategoryDAO{
     @Override
     public void deleteCategory(int id) throws NotFoundException, StorageNotAvailableException {
         try {
-            PreparedStatement statement = conn.prepareStatement("DELETE * FROM category Where id = ?");
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM category Where id = ?");
             statement.setInt(1,id);
             statement.executeUpdate();
         } catch (SQLException e) {
