@@ -33,7 +33,7 @@ public class MenuServiceImplIT {
     public void tearDown() throws Exception {
         TestUtil.executeSQLFile(conn, System.getProperty("mysql_file_menu_teardown"));
     }
-    @Ignore
+
     @Test
     public void getMenuItemById() throws Exception {
         MenuItem actual = menuService.getMenuItem(1);
@@ -48,9 +48,9 @@ public class MenuServiceImplIT {
 
         Assert.assertTrue(actual.equals(expected));
     }
-    @Test
+    /*@Test
     public void UpdateMenuItemById() throws Exception {
-        menuService.updateMenuItem(1);
+        //menuService.updateMenuItem(1);
     }
     @Ignore
     @Test
@@ -88,7 +88,7 @@ public class MenuServiceImplIT {
     @Test(expected = ExistingProblemException.class)
     public void deleteMenuItemByIdException() throws Exception {
         menuService.deleteMenuItem(23);
-    }
+    }*/
 
 
     @AfterClass
