@@ -95,7 +95,7 @@ public class MenuItemDAOmysql implements MenuItemDAO {
 
     public boolean updateMenuItem(MenuItem menuItem) throws NotFoundException, StorageNotAvailableException, AlreadyExistingException, StorageException {
 
-        String updateSQL = "UPDATE menu SET price = ? recipe_id = ? WHERE id = ?";
+        String updateSQL = "UPDATE `menu` SET `price` = ?, `recipe_id` = ? WHERE `id` = ?";
 
         try {
             PreparedStatement ps = conn.prepareStatement(updateSQL);
@@ -127,7 +127,7 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             PreparedStatement ps = conn.prepareStatement(deleteSQL_order_menu);
             ps.setInt(1, id);
             if (ps.executeUpdate() == 0) {
-                throw new NotFoundException();
+                //throw new NotFoundException();
             }
 
             PreparedStatement ps1 = conn.prepareStatement(deleteSQL);
@@ -153,7 +153,7 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             PreparedStatement ps = conn.prepareStatement(deleteSQL_order_menu);
             ps.setInt(1, menuItem.getId());
             if (ps.executeUpdate() == 0) {
-                throw new NotFoundException();
+                //throw new NotFoundException();
             }
 
             PreparedStatement ps1 = conn.prepareStatement(deleteSQL);
