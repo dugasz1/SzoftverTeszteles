@@ -80,7 +80,7 @@ public class MenuServiceImplTest {
         Category category = new Category(1,"testCategory");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1,category,collection);
+        Recipe recipe = new Recipe(1, "husleves", category, collection);
         MenuItem testmenuItem = new MenuItem(1,2000.0f,recipe);
         assertEquals(menuService.updateMenuItem(testmenuItem),true);
     }
@@ -102,7 +102,7 @@ public class MenuServiceImplTest {
         Category category = new Category(1,"testCategory");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1,category,collection);
+        Recipe recipe = new Recipe(1,"pörkölt", category,collection);
         MenuItem testmenuItem = new MenuItem(1,2000.0f,recipe);
         assertEquals(menuService.deleteMenuItem(testmenuItem), true);
     }
