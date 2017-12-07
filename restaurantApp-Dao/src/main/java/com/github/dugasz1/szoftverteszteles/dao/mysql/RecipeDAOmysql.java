@@ -101,7 +101,7 @@ public class RecipeDAOmysql implements RecipeDAO {
     public boolean updateRecipe(int id) {return false;
     }
 
-    public boolean updateRecipe(Recipe recipe) throws StorageNotAvailableException {
+    public boolean updateRecipe(Recipe recipe) throws StorageNotAvailableException, StorageException {
         try {
             PreparedStatement statement = conn.prepareStatement("UPDATE recipe SET id=?,name=?,category_id=? WHERE id=?");
             statement.setInt(1,recipe.getId());
@@ -110,21 +110,19 @@ public class RecipeDAOmysql implements RecipeDAO {
             if(statement.execute())
                 return true;
         } catch (SQLException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageException(e);
         }
         return false;
     }
 
-    public boolean deleteRecipe(int id) throws StorageNotAvailableException {
+    public boolean deleteRecipe(int id) throws StorageNotAvailableException, StorageException {
        try {
            PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
            statement.setInt(1,id);
            return statement.execute();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new StorageException(e);
         }
-        return false;
-
     }
 
     public boolean deleteRecipe(Recipe recipe) {

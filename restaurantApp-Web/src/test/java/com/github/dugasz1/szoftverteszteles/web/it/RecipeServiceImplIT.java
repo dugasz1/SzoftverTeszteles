@@ -39,7 +39,7 @@ public class RecipeServiceImplIT {
 
     @Test
     public void deleteRecipe() throws Exception{
-        Assert.assertFalse(recipeService.deleteRecipe(1));
+        Assert.assertFalse(recipeService.deleteRecipe(1111));
     }
 
 
