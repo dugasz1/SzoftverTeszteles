@@ -4,6 +4,7 @@ import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
 import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.core.service.MenuService;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MenuItemNotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
 import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
@@ -32,11 +33,11 @@ public class MenuServiceImpl implements MenuService {
         }
     }
 
-    public MenuItem getMenuItem(int id) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+    public MenuItem getMenuItem(int id) throws ExistingProblemException, MenuItemNotFoundException, StorageProblemException, MissingArgumentException {
         try {
             return menuDao.getMenuItem(id);
         } catch (NotFoundException e) {
-            throw new ExistingProblemException();
+            throw new MenuItemNotFoundException();
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException();
         } catch (NoCategoryException e) {
