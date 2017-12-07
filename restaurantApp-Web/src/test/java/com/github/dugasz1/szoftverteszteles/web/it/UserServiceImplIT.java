@@ -65,7 +65,25 @@ public class UserServiceImplIT {
         userService.getUser(55);
     }
 
+    @Test
+    public void createUserTest() throws Exception {
+        String userName = " New User";
+        User newUser = userService.createUser(userName);
 
+        Assert.assertTrue(userService.getUser(userName).equals(newUser));
+    }
+
+    @Test
+    public void deleteUserByIdTest() throws Exception {
+        User local = userService.getUser(1);
+        Assert.assertTrue(userService.deleteUser(local.getId()));
+    }
+
+    @Test
+    public void deleteUserByUserTest() throws Exception {
+        User local = userService.getUser(1);
+        Assert.assertTrue(userService.deleteUser(local));
+    }
 
     @AfterClass
     public static void tearDownClass() throws Exception {

@@ -49,6 +49,26 @@ public class CategoryServiceImplIT {
         categoryService.deletaCategory(10);
     }
 
+    @Test
+    public void updateCategoryTest() throws Exception {
+        Category base = categoryService.getCategory(1);
+        base.setName("New name");
+        categoryService.updateCategor(base);
+        Category updated = categoryService.getCategory(1);
+
+        Assert.assertTrue(updated.getName().equals(base.getName()));
+    }
+
+    @Ignore
+    @Test
+    public void addCategoryTest() throws Exception {
+        Category base = new Category(7, "Spagetti");
+        categoryService.addCategory(base);
+        Category added = categoryService.getCategory(7);
+
+        Assert.assertTrue(base.getName().equals(added));
+    }
+
     @AfterClass
     public static void tearDownClass() throws Exception {
         conn.close();
