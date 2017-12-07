@@ -98,11 +98,9 @@ public class RecipeDAOmysql implements RecipeDAO {
         return recipe;
     }
 
-    public boolean updateRecipe(int id) {
-        return false;
+    public boolean updateRecipe(int id) {return false;
     }
 
-<<<<<<< Updated upstream
     public boolean updateRecipe(Recipe recipe) throws StorageNotAvailableException, StorageException {
         try {
             PreparedStatement statement = conn.prepareStatement("UPDATE recipe SET id=?,name=?,category_id=? WHERE id=?");
@@ -111,52 +109,20 @@ public class RecipeDAOmysql implements RecipeDAO {
             statement.setInt(3,recipe.getCategory().getId());
             if(statement.execute())
                 return true;
-=======
-    public boolean updateRecipe(Recipe recipe) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException{
-        String updateSQL = "UPDATE recipe SET name = ? WHERE id = ?";
-        try {
-            PreparedStatement ps = conn.prepareStatement(updateSQL);
-            ps.setString(1, recipe.getName());
-            ps.setInt(2, recipe.getId());
-            if (ps.executeUpdate() == 0) {
-                throw new NotFoundException();
-            }
-        } catch (SQLIntegrityConstraintViolationException e) {
-            throw new AlreadyExistingException(e);
-        } catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
->>>>>>> Stashed changes
         } catch (SQLException e) {
             throw new StorageException(e);
         }
-        return true;
+        return false;
     }
 
-<<<<<<< Updated upstream
     public boolean deleteRecipe(int id) throws StorageNotAvailableException, StorageException {
-       try {
-           PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
-           statement.setInt(1,id);
-           return statement.execute();
-        } catch (SQLException e) {
-            throw new StorageException(e);
-        }
-=======
-
-    public boolean deleteRecipe(int id) throws NotFoundException, StorageNotAvailableException, StorageException{
-        String deleteSQL = "DELETE FROM recipe WHERE id = ?";
         try {
-            PreparedStatement ps = conn.prepareStatement(deleteSQL);
-            ps.setInt(1, id);
-            if (ps.executeUpdate() == 0) {
-                throw new NotFoundException();
-            }
-
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
+            statement.setInt(1,id);
+            return statement.execute();
         } catch (SQLException e) {
             throw new StorageException(e);
         }
-        return true;
->>>>>>> Stashed changes
     }
 
     public boolean deleteRecipe(Recipe recipe) {
