@@ -4,14 +4,14 @@ import com.github.dugasz1.szoftverteszteles.core.model.MenuItem;
 import com.github.dugasz1.szoftverteszteles.core.model.Order;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
 import com.github.dugasz1.szoftverteszteles.core.service.OrderService;
-import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
-import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
-import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.*;
+import com.github.dugasz1.szoftverteszteles.service.dao.MenuItemDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.OrderDAO;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 import java.util.Collection;
 import java.util.Dictionary;
+import java.util.Map;
 
 
 public class OrderServiceImpl implements OrderService {
@@ -22,63 +22,61 @@ public class OrderServiceImpl implements OrderService {
         this.orderDAO = orderDAO;
     }
 
-    public Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws MissingArgumentException, StorageProblemException, ExistingProblemException {
+    public Order createOrder(Map<MenuItem, Integer> menuItems) throws StorageProblemException, OrderEmptyOrNullException {
         try {
             return orderDAO.createOrder(menuItems);
-        } catch (NotFoundException | AlreadyExistingException e) {
-            throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
+        } catch (OrderWrongMapException e) {
+            throw new OrderEmptyOrNullException(e);
         }
     }
 
-    public Order getOrder(int id) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+    public Order getOrder(int id) throws StorageProblemException, OrderNotFoundException {
         try {
             return orderDAO.getOrder(id);
         } catch (NotFoundException e) {
-            throw new ExistingProblemException();
+            throw new OrderNotFoundException(e);
         } catch (StorageException | StorageNotAvailableException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
-    public Collection<Order> getByUser(User user) throws ExistingProblemException, StorageProblemException, MissingArgumentException {
+    public Collection<Order> getByUser(User user) throws StorageProblemException {
         try {
             return orderDAO.getByUser(user);
-        } catch (NotFoundException e) {
-            throw new ExistingProblemException();
         } catch (StorageException | StorageNotAvailableException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
-    public boolean updateOrder(Order order) throws StorageProblemException, ExistingProblemException {
+    public boolean updateOrder(Order order) throws StorageProblemException, OrderNotFoundException {
         try {
             return orderDAO.updateOrder(order);
-        } catch (NotFoundException | AlreadyExistingException e) {
-            throw new ExistingProblemException();
+        } catch (NotFoundException e) {
+            throw new OrderNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
-    public Order deleteOrder(int id) throws ExistingProblemException, StorageProblemException {
+    public Order deleteOrder(int id) throws StorageProblemException, OrderNotFoundException {
         try {
             return orderDAO.deleteOrder(id);
         } catch (NotFoundException e) {
-            throw new ExistingProblemException();
+            throw new OrderNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
-    public Order deleteOrder(Order order) throws ExistingProblemException, StorageProblemException {
+    public Order deleteOrder(Order order) throws StorageProblemException, OrderNotFoundException {
         try {
             return orderDAO.deleteOrder(order);
         } catch (NotFoundException e) {
-            throw new ExistingProblemException();
+            throw new OrderNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 }

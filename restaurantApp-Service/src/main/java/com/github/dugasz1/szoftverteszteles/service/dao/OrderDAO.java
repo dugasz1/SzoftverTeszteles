@@ -7,16 +7,17 @@ import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.*;
 
 import java.util.Collection;
 import java.util.Dictionary;
+import java.util.Map;
 
 public interface OrderDAO {
 
-    Order createOrder(Dictionary<MenuItem, Integer> menuItems) throws NotFoundException, StorageException, StorageNotAvailableException, AlreadyExistingException;
+    Order createOrder(Map<MenuItem, Integer> menuItems) throws StorageException, StorageNotAvailableException, OrderWrongMapException;
 
     Order getOrder(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    Collection<Order> getByUser(User user) throws NotFoundException, StorageException, StorageNotAvailableException;
+    Collection<Order> getByUser(User user) throws StorageException, StorageNotAvailableException;
 
-    boolean updateOrder(Order order) throws NotFoundException, StorageNotAvailableException, StorageException, AlreadyExistingException;
+    boolean updateOrder(Order order) throws NotFoundException, StorageNotAvailableException, StorageException;
 
     Order deleteOrder(int id) throws NotFoundException, StorageNotAvailableException, StorageException;
 
