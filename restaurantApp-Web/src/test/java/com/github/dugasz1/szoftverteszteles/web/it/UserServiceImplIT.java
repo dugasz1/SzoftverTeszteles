@@ -1,6 +1,7 @@
 package com.github.dugasz1.szoftverteszteles.web.it;
 
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.UserAlreadyExistExpection;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.UserNotFoundExpection;
 import com.github.dugasz1.szoftverteszteles.service.dao.exceptions.NotFoundException;
 import com.github.dugasz1.szoftverteszteles.core.model.User;
@@ -74,16 +75,33 @@ public class UserServiceImplIT {
         Assert.assertTrue(userService.getUser(userName).equals(newUser));
     }
 
+    @Test(expected = UserAlreadyExistExpection.class)
+    public void createExistingUser() throws Exception {
+        userService.createUser("Ardó Bence");
+    }
+
     @Test
     public void deleteUserByIdTest() throws Exception {
         User local = userService.getUser(1);
         Assert.assertTrue(userService.deleteUser(local.getId()));
     }
 
+    @Test(expected = UserNotFoundExpection.class)
+    public void deleteUserByIdTest2() throws Exception {
+        User user = userService.getUser(3);
+        userService.deleteUser(user);
+        userService.getUser(3);
+    }
+
     @Test
     public void deleteUserByUserTest() throws Exception {
         User local = userService.getUser(1);
         Assert.assertTrue(userService.deleteUser(local));
+    }
+
+    @Test(expected = UserNotFoundExpection.class)
+    public void deleteNotExistingUser() throws Exception {
+        userService.deleteUser(23);
     }
 
     @AfterClass
