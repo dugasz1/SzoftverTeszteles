@@ -116,10 +116,10 @@ public class RecipeDAOmysql implements RecipeDAO {
     }
 
     public boolean deleteRecipe(int id) throws StorageNotAvailableException, StorageException {
-       try {
-           PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
-           statement.setInt(1,id);
-           return statement.execute();
+        try {
+            PreparedStatement statement = conn.prepareStatement("DELETE FROM recipe WHERE id = ?");
+            statement.setInt(1,id);
+            return statement.execute();
         } catch (SQLException e) {
             throw new StorageException(e);
         }
