@@ -40,10 +40,10 @@ public class MenuServiceImplIT {
         Nutritions nutritions = new Nutritions(1.1f, 2.2f, 3.3f, 4.4f, 5.5f);
         IngredientItem ingredientItem = new IngredientItem(1, "testIngredientItem", nutritions, "testUnit");
         Ingredient ingredient = new Ingredient(ingredientItem, 2.0f);
-        Category category = new Category(1, "testCategory");
+        Category category = new Category(1, "Category1");
         Collection collection = new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, "testName", category, collection);
+        Recipe recipe = new Recipe(1, "Test1", category, collection);
         MenuItem expected = new MenuItem(1, 2000.0f, recipe);
 
         Assert.assertTrue(actual.equals(expected));
@@ -58,10 +58,10 @@ public class MenuServiceImplIT {
         Nutritions nutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
         IngredientItem ingredientItem = new IngredientItem(1,"testIngredientItem",nutritions,"testUnit");
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
-        Category category = new Category(1,"testCategory");
+        Category category = new Category(1,"Category1");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, "testName", category,collection);
+        Recipe recipe = new Recipe(1, "Test1", category,collection);
         MenuItem expected = new MenuItem(1,2000.0f,recipe);
         menuService.updateMenuItem(expected);
     }
@@ -71,10 +71,10 @@ public class MenuServiceImplIT {
         Nutritions nutritions = new Nutritions(1.1f,2.2f,3.3f,4.4f,5.5f);
         IngredientItem ingredientItem = new IngredientItem(1,"testIngredientItem",nutritions,"testUnit");
         Ingredient ingredient = new Ingredient(ingredientItem,2.0f);
-        Category category = new Category(1,"testCategory");
+        Category category = new Category(1,"Category1");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1, "testname", category,collection);
+        Recipe recipe = new Recipe(1, "Test1", category,collection);
         MenuItem expected = new MenuItem(1,2000.0f,recipe);
         menuService.deleteMenuItem(expected);
 
