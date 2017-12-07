@@ -21,8 +21,8 @@ public class OrderTest {
         ingredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory1"), ingredientList)));
-        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2, new Category(2, "testCategory2"), ingredientList)));
+        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1,"name",  new Category(1, "testCategory1"), ingredientList)));
+        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2,"name",  new Category(2, "testCategory2"), ingredientList)));
 
         orderTest = new Order(1, new Date(2017-11-07), menuItemCollection);
     }
@@ -64,8 +64,8 @@ public class OrderTest {
         localIngredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        localMenuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory1"), localIngredientList)));
-        localMenuItemCollection.add(new MenuItem(2,2000f, new Recipe(2, new Category(2, "testCategory2"), localIngredientList)));
+        localMenuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1,"name",  new Category(1, "testCategory1"), localIngredientList)));
+        localMenuItemCollection.add(new MenuItem(2,2000f, new Recipe(2,"name",  new Category(2, "testCategory2"), localIngredientList)));
 
         assertEquals(orderTest.getMenuItems(), localMenuItemCollection);
     }
@@ -80,8 +80,8 @@ public class OrderTest {
         localIngredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        localMenuItemCollection.add(new MenuItem(3, 3000f, new Recipe(1, new Category(3, "testCategory1"), localIngredientList)));
-        localMenuItemCollection.add(new MenuItem(4,4f, new Recipe(2, new Category(4, "testCategory2"), localIngredientList)));
+        localMenuItemCollection.add(new MenuItem(3, 3000f, new Recipe(1,"name",  new Category(3, "testCategory1"), localIngredientList)));
+        localMenuItemCollection.add(new MenuItem(4,4f, new Recipe(2,"name",  new Category(4, "testCategory2"), localIngredientList)));
 
         orderTest.setMenuItems(localMenuItemCollection);
         assertEquals(orderTest.getMenuItems(), localMenuItemCollection);

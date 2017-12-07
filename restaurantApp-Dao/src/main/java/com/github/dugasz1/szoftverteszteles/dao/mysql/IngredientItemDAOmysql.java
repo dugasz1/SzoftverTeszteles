@@ -71,11 +71,11 @@ public class IngredientItemDAOmysql implements IngredientItemDAO {
                 throw new NotFoundException();
             }
         } catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         } catch (SQLIntegrityConstraintViolationException e) {
-            throw new AlreadyExistingException();
+            throw new AlreadyExistingException(e);
         } catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         }
         return true;
     }

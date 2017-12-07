@@ -20,7 +20,23 @@ public class MenuItemDAOmysql implements MenuItemDAO {
         this.conn = conn;
     }
 
-    public void createMenuItem(MenuItem menuItem) {
+    public void createMenuItem(MenuItem menuItem) throws StorageNotAvailableException, AlreadyExistingException, StorageException {
+        try {
+            PreparedStatement statement = conn.prepareStatement("Insert Into recipe (recipe_id, price) VALUE (?,?)");
+            statement.setInt(1, menuItem.getRecipe().getId());
+            statement.setFloat(2, menuItem.getPrice());
+            statement.executeUpdate();
+
+        }
+        catch (CommunicationsException e) {
+            throw new StorageNotAvailableException(e);
+        }
+        catch (SQLIntegrityConstraintViolationException e) {
+            throw new AlreadyExistingException(e);
+        }
+        catch (SQLException e) {
+            throw new StorageException(e);
+        }
 
     }
 
@@ -53,14 +69,14 @@ public class MenuItemDAOmysql implements MenuItemDAO {
                     ingredients.add(grabIngredientItem(rs));
                 }
                 Category category = new Category(rs.getInt("category.id"), rs.getString("category.name"));
-                Recipe recipe = new Recipe(rs.getInt("recipe.id"),category, ingredients);
+                Recipe recipe = new Recipe(rs.getInt("recipe.id"),rs.getString("recipe.name"),category, ingredients);
                 menuItem = new MenuItem(rs.getInt("menu.id"), rs.getFloat("menu.price"), recipe);
             } else {
                 throw new NotFoundException();
             }
         }
         catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         }
         catch (SQLException e) {
             throw new StorageException(e);
@@ -86,13 +102,13 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             }
         }
         catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         }
         catch (SQLIntegrityConstraintViolationException e) {
-            throw new AlreadyExistingException();
+            throw new AlreadyExistingException(e);
         }
         catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         }
         return true;
     }
@@ -115,10 +131,10 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             }
         }
         catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         }
         catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         }
         return true;
     }
@@ -141,10 +157,10 @@ public class MenuItemDAOmysql implements MenuItemDAO {
             }
         }
         catch (CommunicationsException e) {
-            throw new StorageNotAvailableException();
+            throw new StorageNotAvailableException(e);
         }
         catch (SQLException e) {
-            throw new StorageException();
+            throw new StorageException(e);
         }
         return true;
     }

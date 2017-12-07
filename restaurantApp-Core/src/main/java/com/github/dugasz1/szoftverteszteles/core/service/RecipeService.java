@@ -1,5 +1,6 @@
 package com.github.dugasz1.szoftverteszteles.core.service;
 
+import com.github.dugasz1.szoftverteszteles.core.exceptions.NoCategoryException;
 import com.github.dugasz1.szoftverteszteles.core.model.Recipe;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.ExistingProblemException;
 import com.github.dugasz1.szoftverteszteles.core.service.exceptions.MissingArgumentException;
@@ -7,7 +8,7 @@ import com.github.dugasz1.szoftverteszteles.core.service.exceptions.StorageProbl
 
 public interface RecipeService {
 
-    Recipe getRecipe(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException;
+    Recipe getRecipe(int id) throws StorageProblemException, ExistingProblemException, MissingArgumentException, NoCategoryException;
 
     boolean updateRecipe(int id) throws StorageProblemException, ExistingProblemException;
 

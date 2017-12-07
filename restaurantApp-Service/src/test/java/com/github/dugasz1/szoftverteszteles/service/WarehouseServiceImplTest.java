@@ -46,7 +46,7 @@ public class WarehouseServiceImplTest {
 
         Collection<Ingredient> ingredients = new ArrayList<Ingredient>();
         ingredients.add(ingredient);
-        menuItem = new MenuItem(1, 10, new Recipe(1, new Category(1,"Teszt"),
+        menuItem = new MenuItem(1, 10, new Recipe(1,"name",  new Category(1,"Teszt"),
                 ingredients));
         Collection<MenuItem> menuItems = new ArrayList<MenuItem>();
         menuItems.add(menuItem);

@@ -27,7 +27,7 @@ public class IngredientItemServiceImpl implements IngredientItemService {
         } catch (NotFoundException e) {
             throw new IngredientItemNotFoundException(e);
         } catch (StorageException | StorageNotAvailableException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
@@ -37,7 +37,7 @@ public class IngredientItemServiceImpl implements IngredientItemService {
         } catch (NotFoundException | AlreadyExistingException e) {
             throw new IngredientItemNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
@@ -47,7 +47,7 @@ public class IngredientItemServiceImpl implements IngredientItemService {
         } catch (NotFoundException | AlreadyExistingException e) {
             throw new IngredientItemNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
@@ -57,7 +57,7 @@ public class IngredientItemServiceImpl implements IngredientItemService {
         } catch (NotFoundException e) {
             throw new IngredientItemNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 
@@ -67,7 +67,7 @@ public class IngredientItemServiceImpl implements IngredientItemService {
         } catch (NotFoundException e) {
             throw new IngredientItemNotFoundException(e);
         } catch (StorageNotAvailableException | StorageException e) {
-            throw new StorageProblemException();
+            throw new StorageProblemException(e);
         }
     }
 }

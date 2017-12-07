@@ -24,8 +24,8 @@ public class OrderServiceImplTest {
         ingredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory1"), ingredientList)));
-        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2, new Category(2, "testCategory2"), ingredientList)));
+        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1,"name",  new Category(1, "testCategory1"), ingredientList)));
+        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2,"name",  new Category(2, "testCategory2"), ingredientList)));
 
         Order order = new Order(1, new Date(2017-11-07), menuItemCollection);
 
@@ -50,8 +50,8 @@ public class OrderServiceImplTest {
         ingredientList.add(new Ingredient(new IngredientItem(2, "testingredientitem2",
                 new Nutritions(11.1f,22.2f,33.3f,44.4f,55.5f), "testunit2"), 11.5f));
 
-        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1, new Category(1, "testCategory1"), ingredientList)));
-        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2, new Category(2, "testCategory2"), ingredientList)));
+        menuItemCollection.add(new MenuItem(1, 1550f, new Recipe(1,"name", new Category(1, "testCategory1"), ingredientList)));
+        menuItemCollection.add(new MenuItem(2,2000f, new Recipe(2,"name", new Category(2, "testCategory2"), ingredientList)));
 
         Order order = new Order(1, new Date(2017-11-07), menuItemCollection);
 

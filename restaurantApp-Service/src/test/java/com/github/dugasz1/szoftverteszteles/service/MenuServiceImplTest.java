@@ -28,7 +28,7 @@ public class MenuServiceImplTest {
         Category category = new Category(1,"testCategory");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1,category,collection);
+        Recipe recipe = new Recipe(1,"name", category,collection);
         MenuItem menuItem = new MenuItem(1,2000.0f,recipe);
         EasyMock.expect(menuDAO.getMenuItem(1)).andReturn(menuItem);
         EasyMock.expect(menuDAO.updateMenuItem(menuItem)).andReturn(true);
@@ -67,7 +67,7 @@ public class MenuServiceImplTest {
         Category category = new Category(1,"testCategory");
         Collection collection= new ArrayList<Ingredient>();
         collection.add(ingredient);
-        Recipe recipe = new Recipe(1,category,collection);
+        Recipe recipe = new Recipe(1,"name", category,collection);
         MenuItem menuItem = new MenuItem(1,2000.0f,recipe);
         assertEquals(menuService.getMenuItem(1),menuItem);
     }
