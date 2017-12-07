@@ -98,16 +98,34 @@ public class RecipeDAOmysql implements RecipeDAO {
         return recipe;
     }
 
-    public boolean updateRecipe(int id) {
+    public boolean updateRecipe(int id) {return false;
+    }
+
+    public boolean updateRecipe(Recipe recipe) throws StorageNotAvailableException {
+        try {
+            PreparedStatement statement = conn.prepareStatement("UPDATE recipe SET id=?,name=?,category_id=? WHERE id=?");
+            statement.setInt(1,recipe.getId());
+            statement.setString(2,recipe.getName());
+            statement.setInt(3,recipe.getCategory().getId());
+            if(statement.execute())
+                return true;
+        } catch (SQLException e) {
+            throw new StorageNotAvailableException();
+        }
         return false;
     }
 
-    public boolean updateRecipe(Recipe recipe) {
+    public boolean deleteRecipe(int id) throws StorageNotAvailableException {
+       try {
+           PreparedStatement statement = conn.prepareStatement("DELETE * FROM Recipe WHERE id = ?");
+           statement.setInt(1,id);
+           if(statement.execute())
+               return true;
+        } catch (SQLException e) {
+            throw new StorageNotAvailableException();
+        }
         return false;
-    }
 
-    public boolean deleteRecipe(int id) {
-        return false;
     }
 
     public boolean deleteRecipe(Recipe recipe) {
