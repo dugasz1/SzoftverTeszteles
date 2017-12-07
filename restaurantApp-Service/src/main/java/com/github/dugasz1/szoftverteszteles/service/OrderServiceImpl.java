@@ -42,11 +42,13 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
-    public Collection<Order> getByUser(User user) throws StorageProblemException {
+    public Collection<Order> getByUser(User user) throws StorageProblemException, OrderNotFoundException {
         try {
             return orderDAO.getByUser(user);
         } catch (StorageException | StorageNotAvailableException e) {
             throw new StorageProblemException(e);
+        } catch (NotFoundException e) {
+            throw new OrderNotFoundException(e);
         }
     }
 

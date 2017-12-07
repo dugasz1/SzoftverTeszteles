@@ -70,8 +70,27 @@ public class OrderDAOmysql implements OrderDAO {
 
     }
 
-    public Collection<Order> getByUser(User user) {
-        return null;
+    public Collection<Order> getByUser(User user) throws StorageException, StorageNotAvailableException {
+        Collection<Order> orders = new ArrayList<>();
+        try {
+            PreparedStatement userOrderPS = conn.prepareStatement("SELECT * FROM `user_order` WHERE `user_id`=?");
+            userOrderPS.setInt(1, user.getId());
+            ResultSet userOrderRS = userOrderPS.executeQuery();
+            if(!userOrderRS.isBeforeFirst()){ //There is no order for this user
+                return orders;
+            }
+
+            while (userOrderRS.next()){
+                Order order = getOrder(userOrderRS.getInt("order_id"));
+                orders.add(order);
+            }
+        } catch (SQLException e) {
+            throw new StorageException(e);
+        } catch (NotFoundException e) {
+            throw new StorageException(e);
+        }
+
+        return orders;
     }
 
     public boolean updateOrder(Order order) {

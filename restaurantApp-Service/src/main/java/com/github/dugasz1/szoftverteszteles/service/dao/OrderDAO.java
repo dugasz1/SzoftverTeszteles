@@ -15,7 +15,7 @@ public interface OrderDAO {
 
     Order getOrder(int id) throws NotFoundException, StorageException, StorageNotAvailableException;
 
-    Collection<Order> getByUser(User user) throws StorageException, StorageNotAvailableException;
+    Collection<Order> getByUser(User user) throws StorageException, StorageNotAvailableException, NotFoundException;
 
     boolean updateOrder(Order order) throws NotFoundException, StorageNotAvailableException, StorageException;
 

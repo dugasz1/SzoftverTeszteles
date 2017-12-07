@@ -12,3 +12,7 @@ INSERT INTO `menu` (`id`, `recipe_id`, `price`) VALUES (NULL, 1, 3000);
 INSERT INTO `order` (`id`, `date`, `complited`) VALUES (NULL, NOW(), FALSE);
 
 INSERT INTO `order_menu` (`id`, `order_id`, `menu_id`) VALUES (NULL, 1, 1);
+
+INSERT INTO `user` (`id`, `username`) VALUES (NULL, "tesztuser");
+
+INSERT INTO `user_order` (`id`, `user_id`, `order_id`) VALUES (NULL, 1, 1);

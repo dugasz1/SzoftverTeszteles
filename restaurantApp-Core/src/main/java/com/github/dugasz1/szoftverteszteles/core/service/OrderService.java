@@ -21,7 +21,7 @@ public interface OrderService {
      * @return If ther is no order return empty list
      * @throws StorageProblemException
      */
-    Collection<Order> getByUser(User user) throws StorageProblemException;
+    Collection<Order> getByUser(User user) throws StorageProblemException, OrderNotFoundException;
 
     boolean updateOrder(Order order) throws StorageProblemException, OrderNotFoundException;
 

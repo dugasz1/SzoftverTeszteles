@@ -1,4 +1,6 @@
 SET FOREIGN_KEY_CHECKS = 0;
+TRUNCATE `user`;
+TRUNCATE `user_order`;
 TRUNCATE `ingredient`;
 TRUNCATE `recipe_ingredient`;
 TRUNCATE `recipe`;

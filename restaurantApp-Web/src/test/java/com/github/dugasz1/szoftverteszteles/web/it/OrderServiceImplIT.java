@@ -3,6 +3,7 @@ package com.github.dugasz1.szoftverteszteles.web.it;
 import com.github.dugasz1.szoftverteszteles.core.model.*;
 import com.github.dugasz1.szoftverteszteles.core.service.CategoryService;
 import com.github.dugasz1.szoftverteszteles.core.service.OrderService;
+import com.github.dugasz1.szoftverteszteles.core.service.exceptions.OrderNotFoundException;
 import com.github.dugasz1.szoftverteszteles.dao.mysql.CategoryDAOmysql;
 import com.github.dugasz1.szoftverteszteles.dao.mysql.ConnectionManager;
 import com.github.dugasz1.szoftverteszteles.dao.mysql.MenuItemDAOmysql;
@@ -40,7 +41,7 @@ public class OrderServiceImplIT {
     }
 
     @Test
-    public void getOrder() throws Exception {
+    public void getOrderById() throws Exception {
         Order order = orderService.getOrder(1);
         Category category = new Category(1, "leves");
 
@@ -57,5 +58,26 @@ public class OrderServiceImplIT {
         Collection<Ingredient> actualIngr = actualMenu.getRecipe().getIngredients();
 
         Assert.assertThat(actualIngr, CoreMatchers.hasItems(ingredients.toArray(new Ingredient[ingredients.size()])) );
+    }
+
+    @Test(expected = OrderNotFoundException.class)
+    public void getNotExistingOrderById() throws Exception {
+        orderService.getOrder(1111);
+    }
+
+    @Test
+    public void getOrderByUser() throws Exception {
+        User user = new User(1, "tesztuser");
+        Collection<Order> actualOrders = orderService.getByUser(user);
+
+        Assert.assertEquals(actualOrders.iterator().next().getId(), 1);
+    }
+
+    @Test
+    public void getNotExistingOrderByUser() throws Exception {
+        User user = new User(1111, "Not Exist");
+        Collection<Order> orders = orderService.getByUser(user);
+
+        Assert.assertTrue(orders.isEmpty());
     }
 }

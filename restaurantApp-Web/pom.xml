@@ -91,7 +91,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Example property (&amp; = &)
              Do not modify this. Create a profile in your HOME/.m2/settings.xml-->
-        <mysql.connection.string>jdbc:mysql://host/database?user=exampleuser&amp;password=examplepassword</mysql.connection.string>
+        <mysql.connection.string>jdbc:mysql://theHost/theDBName?user=theUser&amp;password=thePW&amp;allowMultiQueries=true&amp;serverTimezone=UTC</mysql.connection.string>
 
         <mysql.file.user.setup>src/test/resources/user_setup.sql</mysql.file.user.setup>
         <mysql.file.user.teardown>src/test/resources/user_teardown.sql</mysql.file.user.teardown>
