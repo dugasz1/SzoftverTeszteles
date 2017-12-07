@@ -15,6 +15,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Dictionary;
+import java.util.Map;
 
 /*
  *TODO: Implement it!
@@ -26,7 +27,7 @@ public class OrderDAOmysql implements OrderDAO {
         this.conn = conn;
     }
 
-    public Order createOrder(Dictionary<MenuItem, Integer> menuItems) {
+    public Order createOrder(Map<MenuItem, Integer> menuItems) {
         return null;
     }
 
